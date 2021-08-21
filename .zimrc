@@ -22,7 +22,8 @@ zmodule utility
 # Exposes git repository status information to prompts, used by asciiship.
 zmodule git-info
 # Theme
-zmodule git@gitlab.com:Ansimorph/basher.git
+zmodule git@github.com:Ansimorph/oblong.git
+# zmodule gitster
 
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions
