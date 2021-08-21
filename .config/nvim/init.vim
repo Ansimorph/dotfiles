@@ -2,26 +2,26 @@
 source /Users/bg/.config/nvim/shared.vim
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'shaunsingh/nord.nvim'
-	Plug 'lewis6991/gitsigns.nvim'
-	Plug 'prettier/vim-prettier', {
-	  \ 'do': 'yarn install',
-	  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-	Plug 'chrisbra/vim-commentary'
-	Plug 'editorconfig/editorconfig-vim'
-	Plug 'hoob3rt/lualine.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
-        Plug 'windwp/nvim-autopairs'
-	Plug 'mattn/emmet-vim'
-	Plug 'svermeulen/vim-subversive'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'kabouzeid/nvim-lspinstall'
-	Plug 'glepnir/lspsaga.nvim'
-	Plug 'nvim-lua/completion-nvim'
-	Plug 'hrsh7th/vim-vsnip'
-	Plug 'hrsh7th/vim-vsnip-integ'
-	Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'shaunsingh/nord.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+  Plug 'chrisbra/vim-commentary'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'hoob3rt/lualine.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'windwp/nvim-autopairs'
+  Plug 'mattn/emmet-vim'
+  Plug 'svermeulen/vim-subversive'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'kabouzeid/nvim-lspinstall'
+  Plug 'glepnir/lspsaga.nvim'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ'
+  Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 " General settings
@@ -70,17 +70,17 @@ require('gitsigns').setup()
 
 --- Lualine
 require("lualine").setup{
-	options = {theme = 'nord'},
-	sections = {
-		lualine_a = {'mode'},
-		lualine_b = {'branch'},
-		lualine_c = {{'diagnostics', sources = {'nvim_lsp'}}},
-		lualine_d = {'filename'},
-		lualine_x = {'encoding', 'filetype'},
-		lualine_y = {'progress'},
-		lualine_z = {'location'}
-		},
-	extensions = {'quickfix', 'nvim-tree'}
+  options = {theme = 'nord'},
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {{'diagnostics', sources = {'nvim_lsp'}}},
+    lualine_d = {'filename'},
+    lualine_x = {'encoding', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+    },
+  extensions = {'quickfix', 'nvim-tree'}
 }
 
 --- LSP
@@ -90,9 +90,9 @@ local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
-	lspconfig = require'lspconfig'
-	lspconfig[server].setup{}
-        lspconfig[server].setup{on_attach=require'completion'.on_attach}
+    lspconfig = require'lspconfig'
+    lspconfig[server].setup{}
+    lspconfig[server].setup{on_attach=require'completion'.on_attach}
   end
 end
 

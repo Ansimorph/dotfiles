@@ -2,8 +2,8 @@
 source /Users/bg/.config/nvim/shared.vim
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'mattn/emmet-vim'
-	Plug 'svermeulen/vim-subversive'
+  Plug 'mattn/emmet-vim'
+  Plug 'svermeulen/vim-subversive'
 call plug#end()
 
 " CodeCommentry via VSCode
