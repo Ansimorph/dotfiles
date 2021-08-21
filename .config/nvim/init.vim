@@ -47,14 +47,14 @@ augroup END
 
 " Telescope
 nnoremap <C-p> <cmd> Telescope find_files<CR>
-nnoremap <C-b> <cmd> Telescope buffers<CR>
+nnoremap <C-a> <cmd> Telescope buffers<CR>
 nnoremap <C-f> <cmd> Telescope live_grep<CR>
 nnoremap <C-i> <C-^>
 
 " Tree
 let g:nvim_tree_quit_on_open = 1
 let g:nvim_tree_follow = 1
-nnoremap <C-a> :NvimTreeToggle<CR>
+nnoremap <C-b> :NvimTreeToggle<CR>
 
 " Prettier
 let g:prettier#autoformat_config_present = 1
