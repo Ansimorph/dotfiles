@@ -135,6 +135,26 @@ bindkey -M vicmd 'j' history-substring-search-down
    export EDITOR='nvim'
 # fi
 
+# Switch cursor between beam and block depending on terminal Vim mode
+BLOCK='\e[1 q'
+BEAM='\e[5 q'
+
+function zle-line-init zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne $BLOCK
+  elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] ||
+       [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]; then
+    echo -ne $BEAM
+  fi
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+bindkey '^R' history-incremental-search-backward
+
+# Remove delay when switching Vim mode
+export KEYTIMEOUT=1
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/python/libexec/bin"
 
 # Mongo bin
