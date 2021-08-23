@@ -128,6 +128,12 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 # }}} End configuration added by Zim install
 
+# Colors
+
+# dirs: blue, not bold
+export LS_COLORS=$LS_COLORS:"di=34"
+alias ls='ls --color=auto'
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
@@ -165,7 +171,6 @@ export PATH="/usr/local/opt/php@7.3/bin:$PATH"
 export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 
 alias please='sudo $(fc -ln -1)'
-alias ls='ls --color=auto'
 alias la='ls -la'
 alias v='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
