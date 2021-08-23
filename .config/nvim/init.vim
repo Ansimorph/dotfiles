@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'vuki656/package-info.nvim'
 call plug#end()
 
 " General settings
@@ -61,6 +62,9 @@ let g:prettier#autoformat_config_present = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 lua << EOF
+
+--- Package info
+require('package-info').setup()
 
 --- Autopair
 require('nvim-autopairs').setup{}
