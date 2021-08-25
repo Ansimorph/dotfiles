@@ -22,6 +22,7 @@ vim.api.nvim_exec(
 
 local use = require('packer').use
 require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
   use 'shaunsingh/nord.nvim'
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'prettier/vim-prettier', run = 'yarn install' } 
