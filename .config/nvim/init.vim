@@ -71,10 +71,28 @@ lua << EOF
 require('lspsaga').init_lsp_saga()
 lspconfig = require'lspconfig'
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
 require'lspinstall'.setup()
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
-  lspconfig[server].setup{}
+  lspconfig[server].setup{
+    capabilities = capabilities,
+  }
 end
 
 --- CMP
@@ -104,6 +122,9 @@ cmp.setup {
     { name = 'nvim_lsp' },
   },
 }
+
+vim.o.completeopt = 'menuone,noinsert,noselect'
+vim.o.shortmess = vim.o.shortmess .. "c"
 
 --- Highlight on yank
 vim.api.nvim_exec(
@@ -140,10 +161,6 @@ require("lualine").setup{
   extensions = {'quickfix', 'nvim-tree'}
 }
 EOF
-
-" Completion setup
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
 
 " LSP keys
 nnoremap <silent> gr <cmd>lua require('lspsaga.rename').rename()<CR>
