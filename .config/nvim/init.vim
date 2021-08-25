@@ -18,11 +18,14 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neovim/nvim-lspconfig'
   Plug 'kabouzeid/nvim-lspinstall'
   Plug 'glepnir/lspsaga.nvim'
-  Plug 'nvim-lua/completion-nvim'
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'vuki656/package-info.nvim'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/cmp-nvim-lsp'
 call plug#end()
 
 " General settings
@@ -63,6 +66,44 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 lua << EOF
 
+--- LSP
+require('lspsaga').init_lsp_saga()
+lspconfig = require'lspconfig'
+
+require'lspinstall'.setup()
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  lspconfig[server].setup{}
+end
+
+--- CMP
+local cmp = require('cmp')
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      vim.fn['vsnip#anonymous'](args.body)
+    end
+  },
+
+  mapping = {
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    })
+  },
+
+  sources = {
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'vsnip' },
+    { name = 'nvim_lsp' },
+  },
+}
+
 --- Highlight on yank
 vim.api.nvim_exec(
   [[
@@ -97,27 +138,9 @@ require("lualine").setup{
     },
   extensions = {'quickfix', 'nvim-tree'}
 }
-
---- LSP
-require('lspsaga').init_lsp_saga()
-
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    lspconfig = require'lspconfig'
-    lspconfig[server].setup{}
-    lspconfig[server].setup{on_attach=require'completion'.on_attach}
-  end
-end
-
-setup_servers()
 EOF
 
 " Completion setup
-let g:completion_enable_snippet = 'vim-vsnip'
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
