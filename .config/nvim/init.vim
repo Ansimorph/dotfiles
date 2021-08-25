@@ -1,30 +1,51 @@
 " Load shared config
 source /Users/bg/.config/nvim/shared.vim
 
-call plug#begin('~/.config/nvim/plugged')
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'shaunsingh/nord.nvim'
-  Plug 'lewis6991/gitsigns.nvim'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'chrisbra/vim-commentary'
-  Plug 'editorconfig/editorconfig-vim'
-  Plug 'hoob3rt/lualine.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'windwp/nvim-autopairs'
-  Plug 'mattn/emmet-vim'
-  Plug 'svermeulen/vim-subversive'
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'kabouzeid/nvim-lspinstall'
-  Plug 'glepnir/lspsaga.nvim'
-  Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'vuki656/package-info.nvim'
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-path'
-  Plug 'hrsh7th/cmp-vsnip'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-call plug#end()
+lua << EOF
+
+--- Install packer
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
+vim.api.nvim_exec(
+  [[
+  augroup Packer
+    autocmd!
+    autocmd BufWritePost init.lua PackerCompile
+  augroup end
+]],
+  false
+)
+
+local use = require('packer').use
+require('packer').startup(function()
+  use 'shaunsingh/nord.nvim'
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'prettier/vim-prettier', run = 'yarn install' } 
+  use 'chrisbra/vim-commentary'
+  use 'editorconfig/editorconfig-vim'
+  use 'hoob3rt/lualine.nvim'
+  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
+  use 'windwp/nvim-autopairs'
+  use 'mattn/emmet-vim'
+  use 'svermeulen/vim-subversive'
+  use 'neovim/nvim-lspconfig'
+  use 'kabouzeid/nvim-lspinstall'
+  use 'glepnir/lspsaga.nvim'
+  use 'kyazdani42/nvim-tree.lua'
+  use 'vuki656/package-info.nvim'
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/cmp-nvim-lsp'
+end)
+
+EOF
 
 " General settings
 set number
