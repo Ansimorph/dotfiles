@@ -24,6 +24,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/cmp-nvim-lsp'
 call plug#end()
