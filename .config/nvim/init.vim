@@ -5,9 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'shaunsingh/nord.nvim'
   Plug 'lewis6991/gitsigns.nvim'
-  Plug 'prettier/vim-prettier', {
-    \ 'do': 'yarn install',
-    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'chrisbra/vim-commentary'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'hoob3rt/lualine.nvim'
