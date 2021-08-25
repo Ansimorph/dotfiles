@@ -1,0 +1,6 @@
+{
+  "log": {
+    "prefix": ["log"],
+    "body": "console.log(${1:$TM_SELECTED_TEXT});"
+  }
+}
