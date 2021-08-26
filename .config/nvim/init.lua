@@ -1,5 +1,5 @@
 -- Load shared config
-vim.cmd 'source /Users/bg/.config/nvim/shared.vim'
+require('shared-config')
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'

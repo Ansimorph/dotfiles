@@ -1,5 +1,5 @@
 " Load shared config
-source /Users/bg/.config/nvim/shared.vim
+luafile /Users/bg/.config/nvim/lua/shared-config.lua
 
 call plug#begin('~/.config/nvim/plugged')
   Plug 'mattn/emmet-vim'
