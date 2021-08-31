@@ -86,7 +86,6 @@ vim.cmd [[colorscheme nord]]
 
 -- Telescope
 vim.api.nvim_set_keymap('n', '<C-p>', '<cmd> Telescope find_files<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-a>', '<cmd> Telescope buffers<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-f>', '<cmd> Telescope live_grep<CR>', { noremap = true })
 
 -- Tree
@@ -95,7 +94,7 @@ vim.g.nvim_tree_follow = 1
 vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true })
 
 -- Prettier
-vim.g['prettier#autoformat_config_present'] = 1
+-- vim.g['prettier#autoformat_config_present'] = 1
 vim.api.nvim_exec(
   [[
     autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
