@@ -42,6 +42,7 @@ require("packer").startup(function()
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/cmp-nvim-lsp")
+        use("ap/vim-css-color")
 end)
 
 -- Save when switching buffers
