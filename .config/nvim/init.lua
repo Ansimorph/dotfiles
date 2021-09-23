@@ -44,6 +44,7 @@ require("packer").startup(function()
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("ap/vim-css-color")
+        use("rhysd/clever-f.vim")
 end)
 
 -- Save when switching buffers
@@ -187,3 +188,9 @@ require("lualine").setup({
 	},
 	extensions = { "quickfix", "nvim-tree" },
 })
+
+-- Clever f
+vim.g.clever_f_across_no_line = 1
+vim.g.clever_f_smart_case = 1
+vim.g.clever_f_mark_char_color = 'IncSearch'
+
