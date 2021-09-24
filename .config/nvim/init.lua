@@ -43,8 +43,8 @@ require("packer").startup(function()
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/cmp-nvim-lsp")
-	use("ap/vim-css-color")
-        use("rhysd/clever-f.vim")
+	use("norcalli/nvim-colorizer.lua")
+	use("rhysd/clever-f.vim")
 end)
 
 -- Save when switching buffers
@@ -192,5 +192,14 @@ require("lualine").setup({
 -- Clever f
 vim.g.clever_f_across_no_line = 1
 vim.g.clever_f_smart_case = 1
-vim.g.clever_f_mark_char_color = 'IncSearch'
+vim.g.clever_f_mark_char_color = "IncSearch"
 
+-- Colorizer
+require("colorizer").setup({
+	css = { rgb_fn = true },
+	scss = { rgb_fn = true },
+	sass = { rgb_fn = true },
+	stylus = { rgb_fn = true },
+	vim = { names = false },
+	tmux = { names = false },
+})
