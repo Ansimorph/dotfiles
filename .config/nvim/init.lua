@@ -33,7 +33,6 @@ require("packer").startup(function()
 	use("svermeulen/vim-subversive")
 	use("neovim/nvim-lspconfig")
 	use("kabouzeid/nvim-lspinstall")
-	use("glepnir/lspsaga.nvim")
 	use("kyazdani42/nvim-tree.lua")
 	use({ "vuki656/package-info.nvim", requires = "MunifTanjim/nui.nvim" })
 	use("hrsh7th/vim-vsnip")
@@ -106,7 +105,6 @@ vim.api.nvim_exec(
 )
 
 -- LSP
-require("lspsaga").init_lsp_saga()
 lspconfig = require("lspconfig")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -120,10 +118,10 @@ for _, server in pairs(servers) do
 	})
 end
 
-vim.api.nvim_set_keymap("n", "gr", '<cmd>lua require("lspsaga.rename").rename()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "gd", ":Lspsaga preview_definition<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "ga", ":Lspsaga code_action<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "ga", ":<C-U>Lspsaga range_code_action<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gr", '<Cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "ga", "'<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
 
 -- CMP
 local cmp = require("cmp")
