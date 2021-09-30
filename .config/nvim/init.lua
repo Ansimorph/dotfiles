@@ -87,12 +87,16 @@ vim.cmd([[colorscheme nord]])
 -- PLUGINS
 
 -- Telescope
-vim.api.nvim_set_keymap("n", "<C-p>", "<cmd> Telescope find_files<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-f>", "<cmd> Telescope live_grep<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-p>", "<Cmd> Telescope find_files<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-f>", "<Cmd> Telescope live_grep<CR>", { noremap = true })
 
 -- Tree
 vim.g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_follow = 1
+require("nvim-tree").setup({
+	update_focused_file = {
+		enable = true,
+	},
+})
 vim.api.nvim_set_keymap("n", "<C-b>", ":NvimTreeToggle<CR>", { noremap = true })
 
 -- Prettier
@@ -118,10 +122,10 @@ for _, server in pairs(servers) do
 	})
 end
 
-vim.api.nvim_set_keymap("n", "gr", '<Cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "ga", "'<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "ga", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
 
 -- CMP
 local cmp = require("cmp")
