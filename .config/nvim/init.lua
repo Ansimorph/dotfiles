@@ -121,6 +121,7 @@ vim.api.nvim_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.rename()<CR>', { norema
 vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', 'ga', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'ge', '<Cmd>:lua vim.lsp.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
 
 -- Null-LS
 require('null-ls').config {
