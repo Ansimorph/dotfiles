@@ -22,11 +22,11 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'shaunsingh/nord.nvim'
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'chrisbra/vim-commentary'
   use 'editorconfig/editorconfig-vim'
   use 'hoob3rt/lualine.nvim'
-  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
+  use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'windwp/nvim-autopairs'
   use 'mattn/emmet-vim'
   use 'svermeulen/vim-subversive'
