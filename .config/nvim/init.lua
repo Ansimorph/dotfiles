@@ -203,11 +203,6 @@ require('lualine').setup {
   extensions = { 'quickfix', 'nvim-tree' },
 }
 
--- Clever f
-vim.g.clever_f_across_no_line = 1
-vim.g.clever_f_smart_case = 1
-vim.g.clever_f_mark_char_color = 'IncSearch'
-
 -- Colorizer
 require('colorizer').setup {
   css = { rgb_fn = true },
