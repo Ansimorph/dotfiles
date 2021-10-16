@@ -31,7 +31,7 @@ require('packer').startup(function()
   use 'mattn/emmet-vim'
   use 'svermeulen/vim-subversive'
   use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
+  use 'williamboman/nvim-lsp-installer'
   use 'kyazdani42/nvim-tree.lua'
   use { 'vuki656/package-info.nvim', requires = 'MunifTanjim/nui.nvim' }
   use 'hrsh7th/vim-vsnip'
@@ -42,7 +42,6 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'norcalli/nvim-colorizer.lua'
-  use 'rhysd/clever-f.vim'
   use 'jose-elias-alvarez/null-ls.nvim'
 end)
 
@@ -105,17 +104,16 @@ lspconfig = require 'lspconfig'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-require('lspinstall').setup()
-local servers = require('lspinstall').installed_servers()
-for _, server in pairs(servers) do
-  lspconfig[server].setup {
+require('nvim-lsp-installer').on_server_ready(function(server)
+  server:setup {
     capabilities = capabilities,
     on_attach = function(client)
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
     end,
   }
-end
+  vim.cmd [[ do User LspAttachBuffers ]]
+end)
 
 vim.api.nvim_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
@@ -129,9 +127,6 @@ require('null-ls').config {
     -- Formatters
     require('null-ls').builtins.formatting.prettierd,
     require('null-ls').builtins.formatting.stylua,
-
-    -- Linters
-    require('null-ls').builtins.diagnostics.eslint_d,
   },
 }
 
