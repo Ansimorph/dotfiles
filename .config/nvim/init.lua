@@ -25,7 +25,7 @@ require('packer').startup(function()
   use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'chrisbra/vim-commentary'
   use 'editorconfig/editorconfig-vim'
-  use 'hoob3rt/lualine.nvim'
+  use 'nvim-lualine/lualine.nvim'
   use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'windwp/nvim-autopairs'
   use 'mattn/emmet-vim'
@@ -185,7 +185,7 @@ require('gitsigns').setup()
 require('lualine').setup {
   options = { theme = 'nord' },
   sections = {
-    lualine_a = { { 'mode', upper = true } },
+    lualine_a = { { 'mode' } },
     lualine_b = { { 'filename', file_status = true } },
     lualine_c = { { 'diagnostics', sources = { 'nvim_lsp' } } },
     lualine_x = { 'encoding', 'filetype' },
