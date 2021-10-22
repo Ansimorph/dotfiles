@@ -189,7 +189,7 @@ require('lualine').setup {
     lualine_b = { { 'filename', file_status = true } },
     lualine_c = { { 'diagnostics', sources = { 'nvim_lsp' } } },
     lualine_x = { 'encoding', 'filetype' },
-    lualine_y = { { 'branch', icon = '' } },
+    lualine_y = { { 'branch', icon = '' } },
     lualine_z = { 'location' },
   },
   inactive_sections = {
