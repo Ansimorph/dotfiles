@@ -163,6 +163,8 @@ cmp.setup {
   },
 }
 
+cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
+
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
@@ -171,12 +173,6 @@ require('package-info').setup()
 
 -- Autopair
 require('nvim-autopairs').setup()
-
-require('nvim-autopairs.completion.cmp').setup {
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` after select function or method item
-  auto_select = true, -- automatically select the first item
-}
 
 -- Git Signs
 require('gitsigns').setup()
