@@ -161,7 +161,7 @@ bindkey '^R' history-incremental-search-backward
 
 # Remove delay when switching Vim mode
 export KEYTIMEOUT=1
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/python/libexec/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin:/usr/local/opt/python/libexec/bin"
 
 # Mongo bin
 export PATH="$PATH:/usr/local/Cellar/mongodb-community@3.4/3.4.24/bin/"
