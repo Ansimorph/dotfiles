@@ -8,15 +8,12 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
-vim.api.nvim_exec(
-  [[
+vim.cmd [[
   augroup Packer
     autocmd!
     autocmd BufWritePost init.lua PackerCompile
   augroup end
-]],
-  false
-)
+]]
 
 local use = require('packer').use
 require('packer').startup(function()
@@ -55,25 +52,19 @@ vim.o.colorcolumn = '81'
 vim.wo.signcolumn = 'number'
 
 -- Highlight on yank
-vim.api.nvim_exec(
-  [[
+vim.cmd [[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]],
-  false
-)
+]]
 
 -- Start terminal in insert mode
-vim.api.nvim_exec(
-  [[
+vim.cmd [[
   augroup terminal
     au TermOpen * startinsert
   augroup END
-]],
-  false
-)
+]]
 
 -- Use ESC to exit insert mode in :term
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
