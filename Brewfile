@@ -88,17 +88,7 @@ cask "the-unarchiver"
 cask "transmission"
 cask "typora"
 cask "vcv-rack"
-cask "virtualbox"
 cask "viscosity"
 cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
-mas "iMovie", id: 408981434
-mas "Key Codes", id: 414568915
-mas "Keynote", id: 409183694
-mas "Magnet", id: 441258766
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft Word", id: 462054704
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Xcode", id: 497799835
