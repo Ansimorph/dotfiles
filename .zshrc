@@ -161,14 +161,12 @@ bindkey '^R' history-incremental-search-backward
 
 # Remove delay when switching Vim mode
 export KEYTIMEOUT=1
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin:/usr/local/opt/python/libexec/bin"
+export PATH="/opt/homebrew/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin:/usr/local/opt/python/libexec/bin"
 
-# Mongo bin
-export PATH="$PATH:/usr/local/Cellar/mongodb-community@3.4/3.4.24/bin/"
+# n
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
 
-# PHP 7.3
-export PATH="/usr/local/opt/php@7.3/bin:$PATH"
-export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 
 alias please='sudo $(fc -ln -1)'
 alias la='ls -la'
@@ -176,7 +174,6 @@ alias v='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 fpath=(/usr/local/share/zsh-completions $fpath)
-
 #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 #export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 #source /usr/local/bin/virtualenvwrapper.sh
