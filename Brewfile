@@ -26,6 +26,7 @@ brew "n"
 brew "ncurses"
 brew "neovim"
 brew "prettier"
+brew "rclone"
 brew "ripgrep"
 brew "stylua"
 brew "wget"
@@ -39,7 +40,6 @@ cask "boop"
 cask "caffeine"
 cask "cyberduck"
 cask "docker"
-cask "dropbox"
 cask "elektron-transfer"
 cask "figma"
 cask "firefox-developer-edition"
@@ -75,7 +75,6 @@ cask "viscosity"
 cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
-mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
