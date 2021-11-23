@@ -161,7 +161,7 @@ bindkey '^R' history-incremental-search-backward
 
 # Remove delay when switching Vim mode
 export KEYTIMEOUT=1
-export PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin"
 
 # n
 export N_PREFIX=$HOME/.n
