@@ -18,7 +18,6 @@ brew "harfbuzz"
 brew "srt"
 brew "ffmpeg"
 brew "fzf"
-brew "handbrake", link: false
 brew "http-server"
 brew "luarocks"
 brew "mas"
