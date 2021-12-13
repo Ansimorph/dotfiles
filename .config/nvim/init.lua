@@ -114,15 +114,12 @@ vim.api.nvim_set_keymap('n', 'ge', '<Cmd>:lua vim.diagnostic.goto_next()<CR>', {
 vim.api.nvim_set_keymap('n', 'gE', '<Cmd>:lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 
 -- Null-LS
-require('null-ls').config {
+require('null-ls').setup {
   sources = {
     -- Formatters
     require('null-ls').builtins.formatting.prettierd,
     require('null-ls').builtins.formatting.stylua,
   },
-}
-
-lspconfig['null-ls'].setup {
   -- Format on save
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
@@ -149,7 +146,7 @@ cmp.setup {
   },
 
   sources = {
-    { name = 'nvim_lsp' },
+    { name = 'nvim_diagnostic' },
     { name = 'path' },
     { name = 'vsnip' },
     { name = 'buffer' },
@@ -176,7 +173,7 @@ require('lualine').setup {
   sections = {
     lualine_a = { { 'mode' } },
     lualine_b = { { 'filename', file_status = true } },
-    lualine_c = { { 'diagnostics', sources = { 'nvim_lsp' } } },
+    lualine_c = { { 'diagnostics', sources = { 'nvim_diagnostic' } } },
     lualine_x = { 'encoding', 'filetype' },
     lualine_y = { { 'branch', icon = '' } },
     lualine_z = { 'location' },
