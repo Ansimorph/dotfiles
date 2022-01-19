@@ -72,6 +72,7 @@ vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 -- Theme
 vim.o.termguicolors = true
 vim.g.nord_borders = true
+vim.g.nord_italic = false
 vim.cmd [[colorscheme nord]]
 
 -- PLUGINS
@@ -123,6 +124,7 @@ require('null-ls').setup {
   -- Format on save
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
+      vim.cmd 'autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx,*.vue,*.svelte EslintFixAll'
       vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
     end
   end,
@@ -146,7 +148,7 @@ cmp.setup {
   },
 
   sources = {
-    { name = 'nvim_diagnostic' },
+    { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'vsnip' },
     { name = 'buffer' },
