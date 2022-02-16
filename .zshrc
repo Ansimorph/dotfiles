@@ -178,8 +178,5 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 #source /usr/local/bin/virtualenvwrapper.sh
 
-#export YVM_DIR=/Users/bg/.yvm
-# [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-
-export YVM_DIR=/usr/local/opt/yvm
+source ~/bin/setup-b2
 
