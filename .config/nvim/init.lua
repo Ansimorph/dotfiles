@@ -27,6 +27,7 @@ require('packer').startup(function()
   use 'windwp/nvim-autopairs'
   use 'mattn/emmet-vim'
   use 'svermeulen/vim-subversive'
+  use 'tpope/vim-surround'
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use 'kyazdani42/nvim-tree.lua'
