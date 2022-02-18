@@ -3,6 +3,14 @@
     "prefix": ["log"],
     "body": "console.log(${1:$TM_SELECTED_TEXT});"
   },
+  "useState()": {
+    "prefix": "us",
+    "body": [
+      "const [${1}, set${1/(.*)/${1:/capitalize}/}] = React.useState($2);",
+      "$0"
+    ],
+    "description": "useState()"
+  },
   "Center": {
     "prefix": "center",
     "body": [
