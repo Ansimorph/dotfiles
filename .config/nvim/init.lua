@@ -15,8 +15,7 @@ vim.cmd [[
   augroup end
 ]]
 
-local use = require('packer').use
-require('packer').startup(function()
+require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'shaunsingh/nord.nvim'
   use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
