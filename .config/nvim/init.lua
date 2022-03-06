@@ -82,10 +82,14 @@ vim.api.nvim_set_keymap('n', '<C-p>', '<Cmd> Telescope find_files<CR>', { norema
 vim.api.nvim_set_keymap('n', '<C-f>', '<Cmd> Telescope live_grep<CR>', { noremap = true })
 
 -- Tree
-vim.g.nvim_tree_quit_on_open = 1
 require('nvim-tree').setup {
   update_focused_file = {
     enable = true,
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    },
   },
 }
 vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true })
