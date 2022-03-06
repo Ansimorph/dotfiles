@@ -51,9 +51,6 @@ vim.o.colorcolumn = '81'
 -- Show signs in the number column
 vim.wo.signcolumn = 'number'
 
--- Set leader
-vim.g.mapleader = ','
-
 -- Highlight on yank
 vim.cmd [[
   augroup YankHighlight
@@ -81,8 +78,8 @@ vim.cmd [[colorscheme nord]]
 -- PLUGINS
 
 -- Telescope
-vim.api.nvim_set_keymap('n', '<Leader>p', '<Cmd> Telescope find_files<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>f', '<Cmd> Telescope live_grep<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-p>', '<Cmd> Telescope find_files<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-f>', '<Cmd> Telescope live_grep<CR>', { noremap = true })
 
 -- Tree
 vim.g.nvim_tree_quit_on_open = 1
@@ -91,7 +88,7 @@ require('nvim-tree').setup {
     enable = true,
   },
 }
-vim.api.nvim_set_keymap('n', '<Leader>b', ':NvimTreeToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true })
 
 -- LSP
 lspconfig = require 'lspconfig'
