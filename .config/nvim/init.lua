@@ -57,13 +57,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- Start terminal in insert mode
-vim.cmd [[
-  augroup terminal
-    au TermOpen * startinsert
-  augroup END
-]]
-
 -- Use ESC to exit insert mode in :term
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
@@ -109,12 +102,12 @@ require('nvim-lsp-installer').on_server_ready(function(server)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
-vim.keymap.set('n', 'gr', '<Cmd>lua vim.lsp.buf.rename()<CR>', { silent = true })
-vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
-vim.keymap.set('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', { silent = true })
-vim.keymap.set('v', 'ga', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', { silent = true })
-vim.keymap.set('n', 'ge', '<Cmd>:lua vim.diagnostic.goto_next()<CR>', { silent = true })
-vim.keymap.set('n', 'gE', '<Cmd>:lua vim.diagnostic.goto_prev()<CR>', { silent = true })
+vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
+vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { silent = true })
+vim.keymap.set('v', 'ga', vim.lsp.buf.range_code_action, { silent = true })
+vim.keymap.set('n', 'ge', vim.diagnostic.goto_next, { silent = true })
+vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, { silent = true })
 
 -- Null-LS
 require('null-ls').setup {
@@ -126,8 +119,18 @@ require('null-ls').setup {
   -- Format on save
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
-      vim.cmd 'autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx,*.vue,*.svelte EslintFixAll'
-      vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
+      local group = vim.api.nvim_create_augroup('lsp_formatting', { clear = true })
+
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        command = 'EslintFixAll',
+        pattern = '*.ts,*.tsx,*.js,*.jsx,*.vue,*.svelte',
+        group = group,
+      })
+
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = vim.lsp.buf.formatting_sync,
+        group = group,
+      })
     end
   end,
 }
