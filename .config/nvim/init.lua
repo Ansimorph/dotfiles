@@ -8,12 +8,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
-vim.cmd [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
-]]
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
 
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
@@ -52,12 +48,14 @@ vim.o.colorcolumn = '81'
 vim.wo.signcolumn = 'number'
 
 -- Highlight on yank
-vim.cmd [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]]
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
 
 -- Start terminal in insert mode
 vim.cmd [[
@@ -67,7 +65,7 @@ vim.cmd [[
 ]]
 
 -- Use ESC to exit insert mode in :term
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 -- Theme
 vim.o.termguicolors = true
@@ -78,8 +76,8 @@ vim.cmd [[colorscheme nord]]
 -- PLUGINS
 
 -- Telescope
-vim.api.nvim_set_keymap('n', '<C-p>', '<Cmd> Telescope find_files<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-f>', '<Cmd> Telescope live_grep<CR>', { noremap = true })
+vim.keymap.set('n', '<C-p>', '<Cmd> Telescope find_files<CR>')
+vim.keymap.set('n', '<C-f>', '<Cmd> Telescope live_grep<CR>')
 
 -- Tree
 require('nvim-tree').setup {
@@ -92,7 +90,7 @@ require('nvim-tree').setup {
     },
   },
 }
-vim.api.nvim_set_keymap('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true })
+vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
 
 -- LSP
 lspconfig = require 'lspconfig'
@@ -111,12 +109,12 @@ require('nvim-lsp-installer').on_server_ready(function(server)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
-vim.api.nvim_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'ga', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'ge', '<Cmd>:lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'gE', '<Cmd>:lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'gr', '<Cmd>lua vim.lsp.buf.rename()<CR>', { silent = true })
+vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+vim.keymap.set('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', { silent = true })
+vim.keymap.set('v', 'ga', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', { silent = true })
+vim.keymap.set('n', 'ge', '<Cmd>:lua vim.diagnostic.goto_next()<CR>', { silent = true })
+vim.keymap.set('n', 'gE', '<Cmd>:lua vim.diagnostic.goto_prev()<CR>', { silent = true })
 
 -- Null-LS
 require('null-ls').setup {
