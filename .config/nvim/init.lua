@@ -69,8 +69,8 @@ vim.cmd [[colorscheme nord]]
 -- PLUGINS
 
 -- Telescope
-vim.keymap.set('n', '<C-p>', '<Cmd> Telescope find_files<CR>')
-vim.keymap.set('n', '<C-f>', '<Cmd> Telescope live_grep<CR>')
+vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
+vim.keymap.set('n', '<C-f>', require('telescope.builtin').live_grep)
 
 -- Tree
 require('nvim-tree').setup {
