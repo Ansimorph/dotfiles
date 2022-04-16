@@ -99,7 +99,6 @@ require('nvim-lsp-installer').on_server_ready(function(server)
       client.resolved_capabilities.document_range_formatting = false
     end,
   }
-  vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
