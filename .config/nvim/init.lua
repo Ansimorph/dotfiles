@@ -35,7 +35,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'norcalli/nvim-colorizer.lua'
-  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'sbdchd/neoformat'
 end)
 
 -- Save when switching buffers
@@ -86,19 +86,8 @@ require('nvim-tree').setup {
 vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
 
 -- LSP
-lspconfig = require 'lspconfig'
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 require('nvim-lsp-installer').on_server_ready(function(server)
-  server:setup {
-    capabilities = capabilities,
-    on_attach = function(client)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-    end,
-  }
+  server:setup {}
 end)
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
@@ -107,32 +96,6 @@ vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { silent = true })
 vim.keymap.set('v', 'ga', vim.lsp.buf.range_code_action, { silent = true })
 vim.keymap.set('n', 'ge', vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, { silent = true })
-
--- Null-LS
-require('null-ls').setup {
-  sources = {
-    -- Formatters
-    require('null-ls').builtins.formatting.prettierd,
-    require('null-ls').builtins.formatting.stylua,
-  },
-  -- Format on save
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      local group = vim.api.nvim_create_augroup('lsp_formatting', { clear = true })
-
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        command = 'EslintFixAll',
-        pattern = '*.ts,*.tsx,*.js,*.jsx,*.vue,*.svelte',
-        group = group,
-      })
-
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = vim.lsp.buf.formatting_sync,
-        group = group,
-      })
-    end
-  end,
-}
 
 -- CMP
 local cmp = require 'cmp'
@@ -204,3 +167,17 @@ require('colorizer').setup {
   vim = { names = false },
   tmux = { names = false },
 }
+
+-- Formatter
+local format = vim.api.nvim_create_augroup('format', { clear = true })
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  command = 'EslintFixAll',
+  pattern = '*.ts,*.tsx,*.js,*.jsx,*.vue,*.svelte',
+  group = format,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = format,
+  command = 'Neoformat',
+})
