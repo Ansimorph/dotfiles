@@ -16,10 +16,10 @@ vim.o.expandtab = true
 vim.g.user_emmet_leader_key = ','
 
 -- Y yank until the end of line  (note: this is now a default on master)
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
+vim.keymap.set('n', 'Y', 'y$')
 
 -- s for substitute
-vim.api.nvim_set_keymap('n', 's', '<plug>(SubversiveSubstitute)', {})
-vim.api.nvim_set_keymap('n', 'ss', '<plug>(SubversiveSubstituteLine)', {})
-vim.api.nvim_set_keymap('n', 'S', '<plug>(SubversiveSubstituteToEndOfLine)', {})
-vim.api.nvim_set_keymap('x', 's', 'p', {})
+vim.keymap.set('n', 's', '<plug>(SubversiveSubstitute)')
+vim.keymap.set('n', 'ss', '<plug>(SubversiveSubstituteLine)')
+vim.keymap.set('n', 'S', '<plug>(SubversiveSubstituteToEndOfLine)')
+vim.keymap.set('x', 's', 'p')
