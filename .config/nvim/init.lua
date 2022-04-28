@@ -86,9 +86,13 @@ require('nvim-tree').setup {
 vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
 
 -- LSP
-require('nvim-lsp-installer').on_server_ready(function(server)
-  server:setup {}
-end)
+require('nvim-lsp-installer').setup {}
+local lspconfig = require 'lspconfig'
+
+lspconfig.tsserver.setup {}
+lspconfig.eslint.setup {}
+lspconfig.vuels.setup {}
+lspconfig.cssls.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
