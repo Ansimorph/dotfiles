@@ -1,6 +1,3 @@
--- Load shared config
-require 'shared-config'
-
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
@@ -38,6 +35,16 @@ require('packer').startup(function(use)
   use 'sbdchd/neoformat'
 end)
 
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+-- Indent based on previous line
+vim.o.autoindent = true
+-- Use system clipboard
+vim.o.clipboard = 'unnamed'
+-- indent by 2 spaces by default
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 -- Save when switching buffers
 vim.o.autowriteall = true
 -- Make line numbers default
@@ -67,6 +74,15 @@ vim.g.nord_italic = false
 vim.cmd [[colorscheme nord]]
 
 -- PLUGINS
+
+-- Emmet
+vim.g.user_emmet_leader_key = ','
+
+-- Subversive
+vim.keymap.set('n', 's', '<plug>(SubversiveSubstitute)')
+vim.keymap.set('n', 'ss', '<plug>(SubversiveSubstituteLine)')
+vim.keymap.set('n', 'S', '<plug>(SubversiveSubstituteToEndOfLine)')
+vim.keymap.set('x', 's', 'p')
 
 -- Telescope
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
