@@ -167,11 +167,17 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 alias please='sudo $(fc -ln -1)'
 alias la='ls -la'
 alias v='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# Java
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
