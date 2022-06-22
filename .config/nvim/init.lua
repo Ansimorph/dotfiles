@@ -9,6 +9,7 @@ local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
 
 require('packer').startup(function(use)
+  use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim'
   use 'shaunsingh/nord.nvim'
   use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
@@ -74,6 +75,9 @@ vim.g.nord_italic = false
 vim.cmd [[colorscheme nord]]
 
 -- PLUGINS
+
+-- Impatient
+require('impatient')
 
 -- Emmet
 vim.g.user_emmet_leader_key = ','
