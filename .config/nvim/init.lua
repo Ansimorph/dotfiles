@@ -1,13 +1,3 @@
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-end
-
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
-
 require('packer').startup(function(use)
   use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim'
@@ -77,7 +67,7 @@ vim.cmd [[colorscheme nord]]
 -- PLUGINS
 
 -- Impatient
-require('impatient')
+require 'impatient'
 
 -- Emmet
 vim.g.user_emmet_leader_key = ','
@@ -188,12 +178,17 @@ require('colorizer').setup {
 local format = vim.api.nvim_create_augroup('format', { clear = true })
 
 vim.api.nvim_create_autocmd('BufWritePre', {
-  group = format,
-  command = 'Neoformat',
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
   command = 'EslintFixAll',
   pattern = '*.ts,*.tsx,*.js,*.jsx,*.vue,*.svelte',
   group = format,
 })
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = format,
+  command = 'Neoformat',
+})
+
+-- packer
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+
+vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
