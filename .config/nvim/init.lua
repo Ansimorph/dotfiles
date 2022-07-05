@@ -1,30 +1,31 @@
-require('packer').startup(function(use)
-  use 'lewis6991/impatient.nvim'
-  use 'wbthomason/packer.nvim'
-  use 'shaunsingh/nord.nvim'
-  use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
-  use 'chrisbra/vim-commentary'
-  use 'editorconfig/editorconfig-vim'
-  use 'nvim-lualine/lualine.nvim'
-  use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }
-  use 'windwp/nvim-autopairs'
-  use 'mattn/emmet-vim'
-  use 'svermeulen/vim-subversive'
-  use 'tpope/vim-surround'
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use 'kyazdani42/nvim-tree.lua'
-  use { 'vuki656/package-info.nvim', requires = 'MunifTanjim/nui.nvim' }
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'norcalli/nvim-colorizer.lua'
-  use 'sbdchd/neoformat'
-end)
+require 'paq' {
+  'lewis6991/impatient.nvim',
+  'nvim-lua/plenary.nvim', -- required by telescope
+  'shaunsingh/nord.nvim',
+  'lewis6991/gitsigns.nvim',
+  'chrisbra/vim-commentary',
+  'editorconfig/editorconfig-vim',
+  'nvim-lualine/lualine.nvim',
+  'nvim-telescope/telescope.nvim',
+  'windwp/nvim-autopairs',
+  'mattn/emmet-vim',
+  'svermeulen/vim-subversive',
+  'tpope/vim-surround',
+  'neovim/nvim-lspconfig',
+  'williamboman/nvim-lsp-installer',
+  'kyazdani42/nvim-tree.lua',
+  'MunifTanjim/nui.nvim', -- required by package info
+  'vuki656/package-info.nvim',
+  'hrsh7th/vim-vsnip',
+  'hrsh7th/vim-vsnip-integ',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-vsnip',
+  'hrsh7th/cmp-nvim-lsp',
+  'norcalli/nvim-colorizer.lua',
+  'sbdchd/neoformat',
+}
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
@@ -165,14 +166,10 @@ require('lualine').setup {
 }
 
 -- Colorizer
-require('colorizer').setup {
-  css = { rgb_fn = true },
-  scss = { rgb_fn = true },
-  sass = { rgb_fn = true },
-  stylus = { rgb_fn = true },
-  vim = { names = false },
-  tmux = { names = false },
-}
+require('colorizer').setup({ '*' }, {
+  names = false,
+  css_fn = true,
+})
 
 -- Formatter
 local format = vim.api.nvim_create_augroup('format', { clear = true })
@@ -187,8 +184,3 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   group = format,
   command = 'Neoformat',
 })
-
--- packer
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-
-vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
