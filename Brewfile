@@ -44,6 +44,7 @@ brew "wget"
 brew "yarn"
 brew "zsh"
 brew "zsh-completions"
+brew "helix-editor/helix/helix"
 cask "1password6"
 cask "audacity"
 cask "blackhole-2ch"
@@ -82,12 +83,10 @@ cask "steam"
 cask "the-unarchiver"
 cask "transmission"
 cask "typora"
-cask "vcv-rack"
 cask "viscosity"
 cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
-mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
