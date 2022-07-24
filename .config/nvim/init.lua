@@ -96,7 +96,6 @@ require('nvim-tree').setup {
 vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
 
 -- LSP
-require('nvim-lsp-installer').setup {}
 local lspconfig = require 'lspconfig'
 
 lspconfig.tsserver.setup {}
