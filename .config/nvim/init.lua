@@ -12,7 +12,6 @@ require 'paq' {
   'svermeulen/vim-subversive',
   'tpope/vim-surround',
   'neovim/nvim-lspconfig',
-  'williamboman/nvim-lsp-installer',
   'kyazdani42/nvim-tree.lua',
   'MunifTanjim/nui.nvim', -- required by package info
   'vuki656/package-info.nvim',
@@ -102,7 +101,6 @@ local lspconfig = require 'lspconfig'
 
 lspconfig.tsserver.setup {}
 lspconfig.eslint.setup {}
-lspconfig.vuels.setup {}
 lspconfig.cssls.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
