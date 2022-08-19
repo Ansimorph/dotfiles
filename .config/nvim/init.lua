@@ -101,6 +101,7 @@ local lspconfig = require 'lspconfig'
 lspconfig.tsserver.setup {}
 lspconfig.eslint.setup {}
 lspconfig.cssls.setup {}
+lspconfig.astro.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
@@ -180,4 +181,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = format,
   command = 'Neoformat',
+})
+
+-- Astro
+vim.g.do_filetype_lua = 1
+vim.filetype.add { extension = { astro = 'astro' } }
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  callback = vim.lsp.buf.formatting,
+  pattern = '*.astro',
+  group = format,
 })
