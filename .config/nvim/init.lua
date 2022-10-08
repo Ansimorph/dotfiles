@@ -186,10 +186,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   command = 'Neoformat',
 })
 
--- Astro
-vim.g.do_filetype_lua = 1
-vim.filetype.add { extension = { astro = 'astro' } }
-
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = vim.lsp.buf.formatting,
   pattern = '*.astro',
