@@ -92,6 +92,9 @@ require('nvim-tree').setup {
       quit_on_open = true,
     },
   },
+  view = {
+    width = 50,
+  },
 }
 vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
 

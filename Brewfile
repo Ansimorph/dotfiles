@@ -1,3 +1,4 @@
+tap "codeclimate/formulae"
 tap "helix-editor/helix"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -13,6 +14,7 @@ tap "qmk/qmk"
 brew "gettext"
 brew "glib"
 brew "circleci"
+brew "cloc"
 brew "coreutils"
 brew "openldap"
 brew "curl"
@@ -28,12 +30,17 @@ brew "node"
 brew "firebase-cli"
 brew "fzf"
 brew "git-crypt"
+brew "helix"
 brew "http-server"
+brew "imagemagick"
 brew "mas"
 brew "n"
 brew "neovim"
 brew "openjdk"
+brew "postgresql@14"
 brew "prettier"
+brew "rabbitmq", restart_service: true
+brew "rbenv"
 brew "rclone"
 brew "restic"
 brew "ripgrep"
@@ -43,7 +50,8 @@ brew "wget"
 brew "yarn"
 brew "zsh"
 brew "zsh-completions"
-brew "helix-editor/helix/helix"
+brew "codeclimate/formulae/codeclimate"
+brew "mongodb/brew/mongodb-community@5.0"
 cask "1password6"
 cask "audacity"
 cask "blackhole-2ch"
@@ -86,3 +94,12 @@ cask "viscosity"
 cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
+mas "iMovie", id: 408981434
+mas "Key Codes", id: 414568915
+mas "Keynote", id: 409183694
+mas "Magnet", id: 441258766
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Word", id: 462054704
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Xcode", id: 497799835

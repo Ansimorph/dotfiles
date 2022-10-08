@@ -163,12 +163,12 @@ bindkey '^R' history-incremental-search-backward
 export KEYTIMEOUT=1
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin"
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # n
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
-
-# homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 alias please='sudo $(fc -ln -1)'
 alias la='ls -la'
@@ -185,4 +185,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #source /usr/local/bin/virtualenvwrapper.sh
 
 source ~/bin/setup-b2
+
+# Rbenv
+eval "$(rbenv init - zsh)"
 
