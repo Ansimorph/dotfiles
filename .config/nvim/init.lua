@@ -44,6 +44,10 @@ vim.wo.number = true
 vim.o.colorcolumn = '81'
 -- Show signs in the number column
 vim.wo.signcolumn = 'number'
+-- Set leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -79,8 +83,10 @@ vim.keymap.set('n', 'S', '<plug>(SubversiveSubstituteToEndOfLine)')
 vim.keymap.set('x', 's', 'p')
 
 -- Telescope
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
-vim.keymap.set('n', '<C-f>', require('telescope.builtin').live_grep)
+vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files)
+vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers)
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').live_grep)
+vim.keymap.set('n', '<leader>*', require('telescope.builtin').grep_string)
 
 -- Tree
 require('nvim-tree').setup {
@@ -96,7 +102,7 @@ require('nvim-tree').setup {
     width = 50,
   },
 }
-vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader><', ':NvimTreeToggle<CR>')
 
 -- LSP
 local lspconfig = require 'lspconfig'
