@@ -9,7 +9,6 @@ require 'paq' {
   'nvim-telescope/telescope.nvim',
   'windwp/nvim-autopairs',
   'mattn/emmet-vim',
-  'svermeulen/vim-subversive',
   'tpope/vim-surround',
   'neovim/nvim-lspconfig',
   'kyazdani42/nvim-tree.lua',
@@ -75,12 +74,6 @@ require 'impatient'
 
 -- Emmet
 vim.g.user_emmet_leader_key = ','
-
--- Subversive
-vim.keymap.set('n', 's', '<plug>(SubversiveSubstitute)')
-vim.keymap.set('n', 'ss', '<plug>(SubversiveSubstituteLine)')
-vim.keymap.set('n', 'S', '<plug>(SubversiveSubstituteToEndOfLine)')
-vim.keymap.set('x', 's', 'p')
 
 -- Telescope
 vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files)
