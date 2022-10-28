@@ -47,6 +47,9 @@ vim.wo.signcolumn = 'number'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- Don't add paragraph jumps to jumplist
+vim.keymap.set('n', '}', '<cmd>execute "keepjumps norm! " . v:count1 . "}"<CR>', { silent = true })
+vim.keymap.set('n', '{', '<cmd>execute "keepjumps norm! " . v:count1 . "{"<CR>', { silent = true })
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -102,6 +105,7 @@ local lspconfig = require 'lspconfig'
 
 lspconfig.tsserver.setup {}
 lspconfig.eslint.setup {}
+lspconfig.stylelint_lsp.setup {}
 lspconfig.cssls.setup {}
 lspconfig.astro.setup {}
 
