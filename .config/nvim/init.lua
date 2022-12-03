@@ -1,7 +1,7 @@
 require 'paq' {
   'lewis6991/impatient.nvim',
   'nvim-lua/plenary.nvim', -- required by telescope
-  'shaunsingh/nord.nvim',
+  'gbprod/nord.nvim',
   'lewis6991/gitsigns.nvim',
   'chrisbra/vim-commentary',
   'editorconfig/editorconfig-vim',
@@ -66,8 +66,6 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 -- Theme
 vim.o.termguicolors = true
-vim.g.nord_borders = true
-vim.g.nord_italic = false
 vim.cmd [[colorscheme nord]]
 
 -- PLUGINS
