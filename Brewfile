@@ -19,7 +19,7 @@ brew "coreutils"
 brew "openldap"
 brew "curl"
 brew "libtool"
-brew "unbound"
+brew "unbound", restart_service: true
 brew "gnutls"
 brew "harfbuzz"
 brew "gobject-introspection"
@@ -37,7 +37,7 @@ brew "mas"
 brew "n"
 brew "neovim"
 brew "openjdk"
-brew "postgresql@14"
+brew "postgresql@14", restart_service: true
 brew "prettier"
 brew "rabbitmq", restart_service: true
 brew "rbenv"

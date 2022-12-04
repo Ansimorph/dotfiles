@@ -166,10 +166,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# n
-export N_PREFIX=$HOME/.n
-export PATH=$N_PREFIX/bin:$PATH
-
 alias please='sudo $(fc -ln -1)'
 alias la='ls -la'
 alias v='nvim'
@@ -188,4 +184,7 @@ source ~/bin/setup-b2
 
 # Rbenv
 eval "$(rbenv init - zsh)"
+
+# ASDF
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
