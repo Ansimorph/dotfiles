@@ -11,7 +11,7 @@ require 'paq' {
   'mattn/emmet-vim',
   'tpope/vim-surround',
   'neovim/nvim-lspconfig',
-  'kyazdani42/nvim-tree.lua',
+  'SidOfc/carbon.nvim',
   'MunifTanjim/nui.nvim', -- required by package info
   'vuki656/package-info.nvim',
   'hrsh7th/vim-vsnip',
@@ -82,21 +82,14 @@ vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers)
 vim.keymap.set('n', '<leader>/', require('telescope.builtin').live_grep)
 vim.keymap.set('n', '<leader>*', require('telescope.builtin').grep_string)
 
--- Tree
-require('nvim-tree').setup {
-  update_focused_file = {
-    enable = true,
-  },
+-- File Tree
+require('carbon').setup {
   actions = {
-    open_file = {
-      quit_on_open = true,
-    },
-  },
-  view = {
-    width = 50,
+    quit = '<esc>',
+    create = { 'a', '%' },
   },
 }
-vim.keymap.set('n', '<leader><', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader><', ':Fcarbon!<CR>')
 
 -- LSP
 local lspconfig = require 'lspconfig'
@@ -164,7 +157,7 @@ require('lualine').setup {
     lualine_y = { { 'branch', icon = '' } },
     lualine_z = { 'location' },
   },
-  extensions = { 'quickfix', 'nvim-tree' },
+  extensions = { 'quickfix' },
 }
 
 -- Colorizer
