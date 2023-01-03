@@ -88,6 +88,22 @@ require('carbon').setup {
     quit = '<esc>',
     create = { 'a', '%' },
   },
+  float_settings = function()
+    local columns = vim.opt.columns:get()
+    local rows = vim.opt.lines:get()
+    local width = math.min(50, math.floor(columns * 0.8))
+    local height = math.floor(rows * 0.8)
+
+    return {
+      style = 'minimal',
+      relative = 'editor',
+      border = 'single',
+      width = width,
+      height = height,
+      col = math.floor(columns / 2 - width / 2),
+      row = math.floor(rows / 2 - height / 2 - 2),
+    }
+  end,
 }
 vim.keymap.set('n', '<leader><', ':Fcarbon!<CR>')
 
