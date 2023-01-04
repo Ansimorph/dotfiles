@@ -83,28 +83,22 @@ vim.keymap.set('n', '<leader>/', require('telescope.builtin').live_grep)
 vim.keymap.set('n', '<leader>*', require('telescope.builtin').grep_string)
 
 -- File Tree
-require('carbon').setup {
-  actions = {
+require('carbon').setup(function(settings)
+  settings.actions = vim.tbl_extend('force', settings.defaults.actions, {
     quit = '<esc>',
     create = { 'a', '%' },
-  },
-  float_settings = function()
-    local columns = vim.opt.columns:get()
+  })
+  function settings.float_settings()
     local rows = vim.opt.lines:get()
-    local width = math.min(50, math.floor(columns * 0.8))
     local height = math.floor(rows * 0.8)
 
-    return {
-      style = 'minimal',
-      relative = 'editor',
-      border = 'single',
-      width = width,
+    return vim.tbl_extend('force', settings.defaults.float_settings(), {
       height = height,
-      col = math.floor(columns / 2 - width / 2),
       row = math.floor(rows / 2 - height / 2 - 2),
-    }
-  end,
-}
+    })
+  end
+end)
+
 vim.keymap.set('n', '<leader><', ':Fcarbon!<CR>')
 
 -- LSP
