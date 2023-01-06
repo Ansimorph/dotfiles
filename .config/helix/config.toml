@@ -1,0 +1,11 @@
+theme = "nord"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[keys.normal]
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+esc = ["collapse_selection", "keep_primary_selection"]
+Z = {Q = ":quit!", Z = ":write-quit!"}
+
