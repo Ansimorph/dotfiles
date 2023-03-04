@@ -1,5 +1,8 @@
 theme = "nord"
 
+[editor]
+rulers = [80]
+
 [editor.cursor-shape]
 insert = "bar"
 

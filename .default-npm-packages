@@ -3,4 +3,6 @@ eslint_d
 stylelint-lsp
 vscode-langservers-extracted
 @astrojs/language-server
+@angular/language-server
+svelte-language-server
 

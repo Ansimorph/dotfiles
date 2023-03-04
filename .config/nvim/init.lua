@@ -23,6 +23,7 @@ require 'paq' {
   'hrsh7th/cmp-nvim-lsp',
   'norcalli/nvim-colorizer.lua',
   'sbdchd/neoformat',
+  'nvim-treesitter/nvim-treesitter',
 }
 
 -- Case insensitive searching UNLESS /C or capital in search
@@ -109,6 +110,8 @@ lspconfig.eslint.setup {}
 lspconfig.stylelint_lsp.setup {}
 lspconfig.cssls.setup {}
 lspconfig.astro.setup {}
+lspconfig.svelte.setup {}
+-- lspconfig.angularls.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
@@ -175,6 +178,15 @@ require('colorizer').setup({ '*' }, {
   names = false,
   css_fn = true,
 })
+
+-- Treesitter
+require('nvim-treesitter.configs').setup {
+  ensure_installed = { 'lua', 'tsx', 'typescript', 'vue', 'svelte', 'css', 'scss', 'astro', 'html', 'javascript' },
+  auto_install = true,
+
+  highlight = { enable = true },
+  indent = { enable = true, disable = { 'python' } },
+}
 
 -- Formatter
 local format = vim.api.nvim_create_augroup('format', { clear = true })
