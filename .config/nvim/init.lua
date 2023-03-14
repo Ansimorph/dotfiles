@@ -111,6 +111,7 @@ lspconfig.stylelint_lsp.setup {}
 lspconfig.cssls.setup {}
 lspconfig.astro.setup {}
 lspconfig.svelte.setup {}
+lspconfig.vuels.setup {}
 -- lspconfig.angularls.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })

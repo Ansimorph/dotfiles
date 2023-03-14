@@ -5,4 +5,5 @@ vscode-langservers-extracted
 @astrojs/language-server
 @angular/language-server
 svelte-language-server
+@volar/vue-language-service
 
