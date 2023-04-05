@@ -16,6 +16,7 @@ brew "libtool"
 brew "asdf"
 brew "gettext"
 brew "glib"
+brew "cloc"
 brew "openldap"
 brew "curl"
 brew "unbound", restart_service: true

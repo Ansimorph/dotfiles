@@ -111,7 +111,13 @@ lspconfig.stylelint_lsp.setup {}
 lspconfig.cssls.setup {}
 lspconfig.astro.setup {}
 lspconfig.svelte.setup {}
-lspconfig.vuels.setup {}
+lspconfig.vuels.setup {
+  settings = {
+    vetur = {
+      completion = { autoImport = true, tagCasing = 'initial', useScaffoldSnippets = true },
+    },
+  },
+}
 -- lspconfig.angularls.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
