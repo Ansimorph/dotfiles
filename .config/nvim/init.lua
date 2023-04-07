@@ -1,10 +1,11 @@
+-- Enable fast loader
+vim.loader.enable()
+
 require 'paq' {
-  'lewis6991/impatient.nvim',
   'nvim-lua/plenary.nvim', -- required by telescope
   'gbprod/nord.nvim',
   'lewis6991/gitsigns.nvim',
   'chrisbra/vim-commentary',
-  'editorconfig/editorconfig-vim',
   'nvim-lualine/lualine.nvim',
   'nvim-telescope/telescope.nvim',
   'windwp/nvim-autopairs',
@@ -70,9 +71,6 @@ vim.o.termguicolors = true
 vim.cmd [[colorscheme nord]]
 
 -- PLUGINS
-
--- Impatient
-require 'impatient'
 
 -- Emmet
 vim.g.user_emmet_leader_key = ','
@@ -210,7 +208,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 vim.api.nvim_create_autocmd('BufWritePre', {
-  callback = vim.lsp.buf.formatting,
+  callback = function()
+    vim.lsp.buf.formatting()
+  end,
   pattern = '*.astro',
   group = format,
 })
