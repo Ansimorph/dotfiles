@@ -3,17 +3,17 @@ vim.loader.enable()
 
 require 'paq' {
   'nvim-lua/plenary.nvim', -- required by telescope
+  'MunifTanjim/nui.nvim', -- required by package info
   'gbprod/nord.nvim',
   'lewis6991/gitsigns.nvim',
   'chrisbra/vim-commentary',
   'nvim-lualine/lualine.nvim',
   'nvim-telescope/telescope.nvim',
-  'windwp/nvim-autopairs',
+  'm4xshen/autoclose.nvim',
   'mattn/emmet-vim',
   'tpope/vim-surround',
   'neovim/nvim-lspconfig',
   'SidOfc/carbon.nvim',
-  'MunifTanjim/nui.nvim', -- required by package info
   'vuki656/package-info.nvim',
   'hrsh7th/vim-vsnip',
   'hrsh7th/vim-vsnip-integ',
@@ -116,7 +116,7 @@ lspconfig.vuels.setup {
     },
   },
 }
--- lspconfig.angularls.setup {}
+lspconfig.angularls.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
@@ -150,16 +150,14 @@ cmp.setup {
   },
 }
 
-cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
-
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
 -- Package info
 require('package-info').setup()
 
--- Autopair
-require('nvim-autopairs').setup()
+-- Autoclose
+require('autoclose').setup()
 
 -- Git Signs
 require('gitsigns').setup()
@@ -205,12 +203,4 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = format,
   command = 'Neoformat',
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  callback = function()
-    vim.lsp.buf.formatting()
-  end,
-  pattern = '*.astro',
-  group = format,
 })
