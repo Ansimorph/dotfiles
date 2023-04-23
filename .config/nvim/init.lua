@@ -82,7 +82,10 @@ vim.keymap.set('n', '<leader>/', require('telescope.builtin').live_grep)
 vim.keymap.set('n', '<leader>*', require('telescope.builtin').grep_string)
 
 -- File Tree
-require('carbon').setup { actions = { create = 'a', quit = '<esc>' } }
+require('carbon').setup {
+  actions = { create = 'a', quit = '<esc>' },
+  highlights = { CarbonFloat = { bg = '#2e3440' } },
+}
 
 vim.keymap.set('n', '<leader><', ':Fcarbon!<CR>')
 
@@ -172,7 +175,6 @@ require('colorizer').setup({ '*' }, {
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 'lua', 'tsx', 'typescript', 'vue', 'svelte', 'css', 'scss', 'astro', 'html', 'javascript' },
   auto_install = true,
-
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
 }
