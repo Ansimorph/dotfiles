@@ -10,8 +10,9 @@ require 'paq' {
   'nvim-lualine/lualine.nvim',
   'nvim-telescope/telescope.nvim',
   'm4xshen/autoclose.nvim',
+  'windwp/nvim-ts-autotag',
   'mattn/emmet-vim',
-  'tpope/vim-surround',
+  'kylechui/nvim-surround',
   'neovim/nvim-lspconfig',
   'SidOfc/carbon.nvim',
   'vuki656/package-info.nvim',
@@ -75,6 +76,9 @@ vim.cmd [[colorscheme nord]]
 -- Emmet
 vim.g.user_emmet_leader_key = ','
 
+-- Surround
+require('nvim-surround').setup()
+
 -- Telescope
 vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files)
 vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers)
@@ -85,6 +89,22 @@ vim.keymap.set('n', '<leader>*', require('telescope.builtin').grep_string)
 require('carbon').setup {
   actions = { create = 'a', quit = '<esc>' },
   highlights = { CarbonFloat = { bg = '#2e3440' } },
+  float_settings = function()
+    local columns = vim.opt.columns:get()
+    local rows = vim.opt.lines:get()
+    local width = math.min(80, math.floor(columns * 0.9))
+    local height = math.min(20, math.floor(rows * 0.9))
+
+    return {
+      relative = 'editor',
+      style = 'minimal',
+      border = 'rounded',
+      width = width,
+      height = height,
+      col = math.floor(columns / 2 - width / 2),
+      row = math.floor(rows / 2 - height / 2 - 2),
+    }
+  end,
 }
 
 vim.keymap.set('n', '<leader><', ':Fcarbon!<CR>')
@@ -147,6 +167,7 @@ require('package-info').setup()
 
 -- Autoclose
 require('autoclose').setup()
+require('nvim-ts-autotag').setup()
 
 -- Git Signs
 require('gitsigns').setup()
