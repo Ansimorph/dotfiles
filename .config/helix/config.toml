@@ -13,3 +13,8 @@ insert = "bar"
 esc = ["collapse_selection", "keep_primary_selection"]
 Z = {Q = ":quit!", Z = ":write-quit!"}
 
+y = "yank_joined_to_clipboard"
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+R = "replace_selections_with_clipboard"
+d = ["yank_joined_to_clipboard", "delete_selection"]
