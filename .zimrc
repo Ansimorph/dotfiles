@@ -1,8 +1,3 @@
-# Start configuration added by Zim install {{{
-# -------
-# Modules
-# -------
-
 # Sets sane Zsh built-in environment options.
 zmodule environment
 # Provides handy git aliases and functions.
@@ -13,18 +8,10 @@ zmodule input
 zmodule termtitle
 # Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
-
-#
-# Prompt
-#
-# Exposes to prompts how long the last command took to execute, used by asciiship.
-# zmodule duration-info
 # Exposes git repository status information to prompts, used by asciiship.
 zmodule git-info
 # Theme
 zmodule git@github.com:Ansimorph/oblong.git
-# zmodule gitster
-
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions
 # Enables and configures smart and extensive tab completion.
@@ -35,8 +22,6 @@ zmodule zsh-users/zsh-autosuggestions
 # Fish-like syntax highlighting for Zsh.
 # zsh-users/zsh-syntax-highlighting must be sourced after completion
 zmodule zsh-users/zsh-syntax-highlighting
-# Fish-like history search (up arrow) for Zsh.
-# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
-zmodule zsh-users/zsh-history-substring-search
-# }}} End configuration added by Zim install
+# asdf integration
+zmodule asdf
 

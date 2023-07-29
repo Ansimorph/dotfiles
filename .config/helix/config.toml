@@ -12,9 +12,13 @@ insert = "bar"
 "0" = ["goto_line_start"]
 esc = ["collapse_selection", "keep_primary_selection"]
 Z = {Q = ":quit!", Z = ":write-quit!"}
+"*" = ["search_selection", "search_next"]
 
 y = "yank_joined_to_clipboard"
 p = "paste_clipboard_after"
 P = "paste_clipboard_before"
 R = "replace_selections_with_clipboard"
 d = ["yank_joined_to_clipboard", "delete_selection"]
+
+[keys.normal."space"]
+"*" = ["search_selection", "global_search"]

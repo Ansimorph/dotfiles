@@ -11,6 +11,11 @@
     ],
     "description": "useState()"
   },
+  "inject": {
+    "prefix": "inj",
+    "body": ["${1} = inject(${1/(.*)/${1:/pascalcase}/});"],
+    "description": "inject()"
+  },
   "Center": {
     "prefix": "center",
     "body": [
