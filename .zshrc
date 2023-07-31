@@ -48,6 +48,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # B2 Variables
 source ~/bin/setup-b2
 
+# ASDF
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 # Aliases
 alias please='sudo $(fc -ln -1)'
 alias v='nvim'
