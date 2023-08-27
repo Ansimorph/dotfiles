@@ -1,16 +1,9 @@
-# No Greeting
-set fish_greeting
-
-# PATH
+set fish_greeting # No Greeting
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin"
 
-# homebrew
+# Imports
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# B2 Variables
 source ~/bin/setup-b2
-
-# ASDF
 source (brew --prefix asdf)/libexec/asdf.fish
 
 # Aliases

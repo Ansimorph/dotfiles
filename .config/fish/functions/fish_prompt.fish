@@ -24,20 +24,18 @@ function fish_prompt
         end
     end
 
-    set -l cyan (set_color cyan)
-    set -l yellow (set_color yellow)
     set -l red (set_color red)
     set -l green (set_color green)
     set -l blue (set_color blue)
     set -l brblack (set_color brblack)
     set -l normal (set_color normal)
 
-    set -l arrow_color "$normal"
+    set -l oblong_color "$normal"
     if test $__last_command_exit_status != 0
-        set arrow_color "$red"
+        set oblong_color "$red"
     end
 
-    set -l oblong "$arrow_color◼ "
+    set -l oblong "$oblong_color◼ "
     set -l prompt $normal'$'
 
     if fish_is_root_user
