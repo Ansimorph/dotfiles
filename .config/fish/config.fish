@@ -4,7 +4,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg
 # Imports
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/bin/setup-b2
-source (brew --prefix asdf)/libexec/asdf.fish
+/opt/homebrew/bin/rtx activate fish | source
 
 # Aliases
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
