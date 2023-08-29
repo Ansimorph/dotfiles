@@ -1,33 +1,10 @@
 function fish_prompt
     set -l __last_command_exit_status $status
 
-    if not set -q -g __fish_arrow_functions_defined
-        set -g __fish_arrow_functions_defined
-        function _git_branch_name
-            set -l branch (git symbolic-ref --quiet HEAD 2>/dev/null)
-            if set -q branch[1]
-                echo (string replace -r '^refs/heads/' '' $branch)
-            else
-                echo (git rev-parse --short HEAD 2>/dev/null)
-            end
-        end
-
-        function _is_git_dirty
-            not command git diff-index --cached --quiet HEAD -- &>/dev/null
-            or not command git diff --no-ext-diff --quiet --exit-code &>/dev/null
-        end
-
-        function _is_git_repo
-            type -q git
-            or return 1
-            git rev-parse --git-dir >/dev/null 2>&1
-        end
-    end
-
     set -l red (set_color red)
     set -l green (set_color green)
     set -l blue (set_color blue)
-    set -l brblack (set_color brblack)
+    set -l black (set_color black)
     set -l normal (set_color normal)
 
     set -l oblong_color "$normal"
@@ -44,22 +21,14 @@ function fish_prompt
 
     set -l cwd $blue(prompt_pwd)
     set -l user_name $normal(whoami)
-    set -l separator $brblack :
+    set -l separator $black :
 
-    set -l repo_info
-    if _is_git_repo
-        set repo_info $normal(_git_branch_name)
+    set -g __fish_git_prompt_showdirtystate true
+    set -g __fish_git_prompt_char_dirtystate ◍
+    set -g __fish_git_prompt_char_cleanstate $green ◍
+    set -g __fish_git_prompt_color_dirtystate red
+    set -g __fish_git_prompt_color normal
 
-        set -l repo_status
-
-        if _is_git_dirty
-            set repo_status "$red ◍"
-        else
-            set repo_status "$green ◍"
-        end
-
-        set repo_info ' ' "$repo_info$repo_status"
-    end
-
-    echo -n -s $oblong $user_name $separator $cwd $repo_info ' ' $prompt ' '
+    set -l git (fish_git_prompt | string replace -r ' \((.*)\)' ' $1')
+    echo -n -s $oblong $user_name $separator $cwd $git ' ' $prompt ' '
 end
