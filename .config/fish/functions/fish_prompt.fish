@@ -28,6 +28,8 @@ function fish_prompt
     set -g __fish_git_prompt_char_cleanstate $green ◍
     set -g __fish_git_prompt_color_dirtystate red
     set -g __fish_git_prompt_color normal
+    set -g __fish_git_prompt_char_stagedstate ◍
+    set -g __fish_git_prompt_color_stagedstate yellow
 
     set -l git (fish_git_prompt | string replace -r ' \((.*)\)' ' $1')
     echo -n -s $oblong $user_name $separator $cwd $git ' ' $prompt ' '
