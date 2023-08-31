@@ -1,6 +1,3 @@
-set fish_greeting # No Greeting
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bg/bin"
-
 # Imports
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/bin/setup-b2
