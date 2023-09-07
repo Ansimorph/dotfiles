@@ -1,4 +1,5 @@
 typescript-language-server
+prettier
 eslint_d
 stylelint-lsp
 vscode-langservers-extracted
