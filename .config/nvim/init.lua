@@ -2,6 +2,7 @@
 vim.loader.enable()
 
 require 'paq' {
+  'savq/paq-nvim',
   'nvim-lua/plenary.nvim', -- required by telescope
   'MunifTanjim/nui.nvim', -- required by package info
   'gbprod/nord.nvim',
