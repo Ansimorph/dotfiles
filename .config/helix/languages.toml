@@ -13,16 +13,17 @@ formatter = { command = 'prettier', args = ["--parser", "css"] }
 [[language]]
 name = "javascript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+language-servers = ["typescript-language-server"]
 auto-format = true
 
 [[language]]
 name = "typescript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+language-servers = ["typescript-language-server"]
 auto-format = true
 
 [[language]]
 name = "vue"
 formatter = { command = 'prettier', args = ["--parser", "vue"] }
-config = { vetur = { completion = { autoImport = true, tagCasing = 'initial', useScaffoldSnippets = true } } }
 auto-format = true
 
