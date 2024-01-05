@@ -23,12 +23,13 @@ brew "git-crypt"
 brew "helix"
 brew "mas"
 brew "maven"
+brew "mise"
 brew "neovim"
 brew "node"
 brew "rclone"
 brew "restic"
 brew "ripgrep"
-brew "rtx"
+brew "rsync"
 brew "serve"
 brew "stylua"
 brew "quarkusio/tap/quarkus"
@@ -58,19 +59,21 @@ cask "imageoptim"
 cask "inkscape"
 cask "intellij-idea-ce"
 cask "jdownloader"
+cask "jellyfin-media-player"
 cask "karabiner-elements"
 cask "keybase"
 cask "kitty"
 cask "libreoffice"
+cask "macwhisper"
 cask "mattermost"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
 cask "microsoft-teams"
+cask "mullvadvpn"
+cask "musicbrainz-picard"
 cask "ngrok"
-cask "nordvpn"
 cask "openemu"
 cask "pd"
-cask "playdate-simulator"
 cask "postman"
 cask "skype"
 cask "slack"
@@ -88,8 +91,6 @@ mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft Word", id: 462054704
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
