@@ -1,7 +1,6 @@
 # Imports
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/bin/setup-b2
-/opt/homebrew/bin/mise activate fish | source
 
 # Aliases
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
