@@ -175,16 +175,12 @@ require('gitsigns').setup()
 
 -- Lualine
 require('lualine').setup {
-  options = { theme = 'nord' },
   sections = {
-    lualine_a = { { 'mode' } },
     lualine_b = { { 'filename', file_status = true } },
     lualine_c = { { 'diagnostics', sources = { 'nvim_diagnostic' } } },
     lualine_x = { 'encoding', 'filetype' },
     lualine_y = { { 'branch', icon = '' } },
-    lualine_z = { 'location' },
   },
-  extensions = { 'quickfix' },
 }
 
 -- Colorizer
