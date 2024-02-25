@@ -32,8 +32,6 @@ require 'paq' {
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
--- Indent based on previous line
-vim.o.autoindent = true
 -- Use system clipboard
 vim.o.clipboard = 'unnamed'
 -- indent by 2 spaces by default
