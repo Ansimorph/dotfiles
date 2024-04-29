@@ -112,7 +112,7 @@ local lspconfig = require 'lspconfig'
 
 lspconfig.tsserver.setup {}
 lspconfig.eslint.setup {}
-lspconfig.stylelint_lsp.setup {}
+lspconfig.stylelint_lsp.setup { filetypes = { 'scss', 'css' } }
 lspconfig.cssls.setup {}
 lspconfig.astro.setup {}
 lspconfig.svelte.setup {}
@@ -123,7 +123,8 @@ lspconfig.vuels.setup {
     },
   },
 }
-lspconfig.angularls.setup {}
+lspconfig.rubocop.setup {}
+-- lspconfig.angularls.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
@@ -207,3 +208,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   group = format,
   command = 'Neoformat',
 })
+
+vim.g.neoformat_ruby_rubocop = {
+  exe = 'rubocop',
+  args = { '--auto-correct', '--stdin', '"%:p"', '2>/dev/null', '|', 'sed "1,/^====================$/d"' },
+  stdin = 1,
+  stderr = 1,
+}
