@@ -7,7 +7,7 @@ require 'paq' {
   'MunifTanjim/nui.nvim', -- required by package info
   'gbprod/nord.nvim',
   'lewis6991/gitsigns.nvim',
-  'chrisbra/vim-commentary',
+  'chrisbra/vim-commentary', -- remove in 0.10?
   'nvim-lualine/lualine.nvim',
   'nvim-telescope/telescope.nvim',
   'm4xshen/autoclose.nvim',
@@ -17,11 +17,11 @@ require 'paq' {
   'neovim/nvim-lspconfig',
   'SidOfc/carbon.nvim',
   'vuki656/package-info.nvim',
-  'hrsh7th/vim-vsnip',
+  'hrsh7th/vim-vsnip', -- remove in 0.10 https://github.com/garymjr/nvim-snippets
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-vsnip',
+  'hrsh7th/cmp-vsnip', -- remove in 0.10
   'hrsh7th/cmp-nvim-lsp',
   'norcalli/nvim-colorizer.lua',
   'sbdchd/neoformat',
@@ -36,8 +36,6 @@ vim.o.clipboard = 'unnamed'
 -- indent by 2 spaces by default
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
--- Save when switching buffers
-vim.o.autowriteall = true
 -- Make line numbers default
 vim.wo.number = true
 -- Add line width marker
@@ -53,29 +51,47 @@ vim.keymap.set('n', '}', '<cmd>execute "keepjumps norm! " . v:count1 . "}"<CR>',
 vim.keymap.set('n', '{', '<cmd>execute "keepjumps norm! " . v:count1 . "{"<CR>', { silent = true })
 
 -- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = highlight_group,
-  pattern = '*',
 })
-
--- Use ESC to exit insert mode in :term
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 -- Theme
 vim.o.termguicolors = true
 vim.cmd [[colorscheme nord]]
 
 -- PLUGINS
+require('nvim-surround').setup()
+require('package-info').setup()
+require('autoclose').setup()
+require('nvim-ts-autotag').setup()
+require('gitsigns').setup()
+
+require('lualine').setup {
+  sections = {
+    lualine_b = { { 'filename', file_status = true } },
+    lualine_c = { { 'diagnostics', sources = { 'nvim_diagnostic' } } },
+    lualine_x = { 'encoding', 'filetype' },
+    lualine_y = { { 'branch', icon = '' } },
+  },
+}
+
+require('colorizer').setup({ '*' }, {
+  names = false,
+  css_fn = true,
+})
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = { 'lua', 'tsx', 'typescript', 'vue', 'svelte', 'css', 'scss', 'astro', 'html', 'javascript' },
+  auto_install = true,
+  highlight = { enable = true },
+  indent = { enable = true, disable = { 'python' } },
+}
 
 -- Emmet
 vim.g.user_emmet_leader_key = ','
-
--- Surround
-require('nvim-surround').setup()
 
 -- Telescope
 vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files)
@@ -86,23 +102,7 @@ vim.keymap.set('n', '<leader>*', require('telescope.builtin').grep_string)
 -- File Tree
 require('carbon').setup {
   actions = { create = 'a', quit = '<esc>' },
-  highlights = { CarbonFloat = { bg = '#2e3440' } },
-  float_settings = function()
-    local columns = vim.opt.columns:get()
-    local rows = vim.opt.lines:get()
-    local width = math.min(80, math.floor(columns * 0.9))
-    local height = math.min(20, math.floor(rows * 0.9))
-
-    return {
-      relative = 'editor',
-      style = 'minimal',
-      border = 'rounded',
-      width = width,
-      height = height,
-      col = math.floor(columns / 2 - width / 2),
-      row = math.floor(rows / 2 - height / 2 - 2),
-    }
-  end,
+  highlights = { CarbonFloat = { bg = require('nord.colors').palette.polar_night.origin } },
 }
 
 vim.keymap.set('n', '<leader><', ':Fcarbon!<CR>')
@@ -116,27 +116,19 @@ lspconfig.stylelint_lsp.setup { filetypes = { 'scss', 'css' } }
 lspconfig.cssls.setup {}
 lspconfig.astro.setup {}
 lspconfig.svelte.setup {}
-lspconfig.vuels.setup {
-  settings = {
-    vetur = {
-      completion = { autoImport = true, tagCasing = 'initial', useScaffoldSnippets = true },
-    },
-  },
-}
 lspconfig.rubocop.setup {}
--- lspconfig.angularls.setup {}
 
-vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
-vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { silent = true })
-vim.keymap.set('v', 'ga', vim.lsp.buf.code_action, { silent = true })
+vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true }) -- remove in 0.10
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true }) -- remove in 0.10
+vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { silent = true }) -- remove in 0.10
+vim.keymap.set('v', 'ga', vim.lsp.buf.code_action, { silent = true }) -- remove in 0.10
 vim.keymap.set('n', 'ge', vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, { silent = true })
 
 -- CMP
 local cmp = require 'cmp'
 cmp.setup {
-  snippet = {
+  snippet = { -- remove in 0.10
     expand = function(args)
       vim.fn['vsnip#anonymous'](args.body)
     end,
@@ -161,40 +153,6 @@ cmp.setup {
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
--- Package info
-require('package-info').setup()
-
--- Autoclose
-require('autoclose').setup()
-require('nvim-ts-autotag').setup()
-
--- Git Signs
-require('gitsigns').setup()
-
--- Lualine
-require('lualine').setup {
-  sections = {
-    lualine_b = { { 'filename', file_status = true } },
-    lualine_c = { { 'diagnostics', sources = { 'nvim_diagnostic' } } },
-    lualine_x = { 'encoding', 'filetype' },
-    lualine_y = { { 'branch', icon = '' } },
-  },
-}
-
--- Colorizer
-require('colorizer').setup({ '*' }, {
-  names = false,
-  css_fn = true,
-})
-
--- Treesitter
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'lua', 'tsx', 'typescript', 'vue', 'svelte', 'css', 'scss', 'astro', 'html', 'javascript' },
-  auto_install = true,
-  highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
-}
-
 -- Formatter
 local format = vim.api.nvim_create_augroup('format', { clear = true })
 
@@ -209,9 +167,4 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   command = 'Neoformat',
 })
 
-vim.g.neoformat_ruby_rubocop = {
-  exe = 'rubocop',
-  args = { '--auto-correct', '--stdin', '"%:p"', '2>/dev/null', '|', 'sed "1,/^====================$/d"' },
-  stdin = 1,
-  stderr = 1,
-}
+vim.g.neoformat_ruby_rubocop = {}

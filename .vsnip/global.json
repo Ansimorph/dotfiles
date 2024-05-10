@@ -6,7 +6,7 @@
   "useState()": {
     "prefix": "us",
     "body": [
-      "const [${1}, set${1/(.*)/${1:/capitalize}/}] = React.useState($2);",
+      "const [${1}, set${1/(.*)/${1:/capitalize}/}] = useState($2);",
       "$0"
     ],
     "description": "useState()"
