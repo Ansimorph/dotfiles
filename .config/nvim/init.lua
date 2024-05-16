@@ -7,7 +7,6 @@ require 'paq' {
   'MunifTanjim/nui.nvim', -- required by package info
   'gbprod/nord.nvim',
   'lewis6991/gitsigns.nvim',
-  'chrisbra/vim-commentary', -- remove in 0.10?
   'nvim-lualine/lualine.nvim',
   'nvim-telescope/telescope.nvim',
   'm4xshen/autoclose.nvim',
@@ -17,11 +16,11 @@ require 'paq' {
   'neovim/nvim-lspconfig',
   'SidOfc/carbon.nvim',
   'vuki656/package-info.nvim',
-  'hrsh7th/vim-vsnip', -- remove in 0.10 https://github.com/garymjr/nvim-snippets
+  'hrsh7th/vim-vsnip',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-vsnip', -- remove in 0.10
+  'hrsh7th/cmp-vsnip',
   'hrsh7th/cmp-nvim-lsp',
   'norcalli/nvim-colorizer.lua',
   'sbdchd/neoformat',
@@ -118,22 +117,16 @@ lspconfig.astro.setup {}
 lspconfig.svelte.setup {}
 lspconfig.rubocop.setup {}
 
-vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true }) -- remove in 0.10
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true }) -- remove in 0.10
-vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { silent = true }) -- remove in 0.10
-vim.keymap.set('v', 'ga', vim.lsp.buf.code_action, { silent = true }) -- remove in 0.10
+vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
+vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { silent = true })
+vim.keymap.set('v', 'ga', vim.lsp.buf.code_action, { silent = true })
 vim.keymap.set('n', 'ge', vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, { silent = true })
 
 -- CMP
 local cmp = require 'cmp'
 cmp.setup {
-  snippet = { -- remove in 0.10
-    expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body)
-    end,
-  },
-
   mapping = {
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
@@ -144,8 +137,8 @@ cmp.setup {
 
   sources = {
     { name = 'vsnip' },
-    { name = 'buffer' },
     { name = 'nvim_lsp' },
+    { name = 'buffer' },
     { name = 'path' },
   },
 }
