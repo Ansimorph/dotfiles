@@ -22,51 +22,41 @@ require 'paq' {
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-vsnip',
   'hrsh7th/cmp-nvim-lsp',
-  'norcalli/nvim-colorizer.lua',
+  'brenoprata10/nvim-highlight-colors',
   'sbdchd/neoformat',
   'nvim-treesitter/nvim-treesitter',
+  'echasnovski/mini.basics',
 }
 
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
 -- Use system clipboard
 vim.o.clipboard = 'unnamed'
 -- indent by 2 spaces by default
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
--- Make line numbers default
-vim.wo.number = true
+-- No cursor line
+vim.o.cursorline = false
 -- Add line width marker
 vim.o.colorcolumn = '81'
 -- Show signs in the number column
 vim.wo.signcolumn = 'number'
--- Set leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- Quiet leader key
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Don't add paragraph jumps to jumplist
 vim.keymap.set('n', '}', '<cmd>execute "keepjumps norm! " . v:count1 . "}"<CR>', { silent = true })
 vim.keymap.set('n', '{', '<cmd>execute "keepjumps norm! " . v:count1 . "{"<CR>', { silent = true })
 
--- Highlight on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 -- Theme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme nord]]
+vim.cmd.colorscheme 'nord'
 
 -- PLUGINS
+require('mini.basics').setup()
 require('nvim-surround').setup()
 require('package-info').setup()
 require('autoclose').setup()
 require('nvim-ts-autotag').setup()
 require('gitsigns').setup()
+require('nvim-highlight-colors').setup()
 
 require('lualine').setup {
   sections = {
@@ -76,11 +66,6 @@ require('lualine').setup {
     lualine_y = { { 'branch', icon = '' } },
   },
 }
-
-require('colorizer').setup({ '*' }, {
-  names = false,
-  css_fn = true,
-})
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 'lua', 'tsx', 'typescript', 'vue', 'svelte', 'css', 'scss', 'astro', 'html', 'javascript' },
@@ -142,9 +127,6 @@ cmp.setup {
     { name = 'path' },
   },
 }
-
-vim.o.completeopt = 'menuone,noinsert,noselect'
-vim.o.shortmess = vim.o.shortmess .. 'c'
 
 -- Formatter
 local format = vim.api.nvim_create_augroup('format', { clear = true })
