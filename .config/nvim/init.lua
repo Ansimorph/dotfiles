@@ -44,9 +44,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Don't add paragraph jumps to jumplist
 vim.keymap.set('n', '}', '<cmd>execute "keepjumps norm! " . v:count1 . "}"<CR>', { silent = true })
 vim.keymap.set('n', '{', '<cmd>execute "keepjumps norm! " . v:count1 . "{"<CR>', { silent = true })
-
 -- Theme
-vim.o.termguicolors = true
 vim.cmd.colorscheme 'nord'
 
 -- PLUGINS
