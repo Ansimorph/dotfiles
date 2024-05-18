@@ -102,8 +102,7 @@ lspconfig.rubocop.setup {}
 
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
-vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { silent = true })
-vim.keymap.set('v', 'ga', vim.lsp.buf.code_action, { silent = true })
+vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action, { silent = true })
 vim.keymap.set('n', 'ge', vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, { silent = true })
 
