@@ -135,12 +135,6 @@ cmp.setup {
 local format = vim.api.nvim_create_augroup('format', { clear = true })
 
 vim.api.nvim_create_autocmd('BufWritePre', {
-  command = 'EslintFixAll',
-  pattern = '*.ts,*.tsx,*.js,*.jsx,*.vue,*.svelte',
-  group = format,
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
   group = format,
   command = 'Neoformat',
 })
