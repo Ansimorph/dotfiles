@@ -109,6 +109,12 @@ vim.keymap.set('n', 'gE', vim.diagnostic.goto_prev, { silent = true })
 -- CMP
 local cmp = require 'cmp'
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      vim.fn['vsnip#anonymous'](args.body)
+    end,
+  },
+
   mapping = {
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
