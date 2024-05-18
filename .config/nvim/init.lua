@@ -132,10 +132,7 @@ cmp.setup {
 }
 
 -- Formatter
-local format = vim.api.nvim_create_augroup('format', { clear = true })
-
 vim.api.nvim_create_autocmd('BufWritePre', {
-  group = format,
   command = 'Neoformat',
 })
 
