@@ -91,11 +91,12 @@ vim.keymap.set('n', '<leader><', ':Fcarbon!<CR>')
 
 -- LSP
 local lspconfig = require 'lspconfig'
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.tsserver.setup {}
 lspconfig.eslint.setup {}
 lspconfig.stylelint_lsp.setup { filetypes = { 'scss', 'css' } }
-lspconfig.cssls.setup {}
+lspconfig.cssls.setup { capabilities = capabilities }
 lspconfig.astro.setup {}
 lspconfig.svelte.setup {}
 lspconfig.rubocop.setup {}

@@ -12,13 +12,5 @@
     "prefix": "inj",
     "body": "${1} = inject(${1/(.*)/${1:/pascalcase}/});",
     "description": "inject()"
-  },
-  "Center": {
-    "prefix": "center",
-    "body": [
-      "display: flex;",
-      "justify-content: center;",
-      "align-items: center;"
-    ]
   }
 }
