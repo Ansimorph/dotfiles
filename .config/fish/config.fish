@@ -6,6 +6,3 @@ source ~/bin/setup-b2
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 abbr G.. 'cd (git rev-parse --show-toplevel || echo .)'
 abbr v nvim
-function sudobangbang --on-event fish_postexec
-    abbr -g please sudo $argv[1]
-end
