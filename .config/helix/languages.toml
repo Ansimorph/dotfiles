@@ -5,26 +5,6 @@ roots = ["angular.json"]
 args = [ "--stdio", "--tsProbeLocations", "$(yarn global dir)/node_modules", "--ngProbeLocations", "$(yarn global dir)/node_modules" ]
 file-types = ["ts", "html"]
 
-[language-server.eslint]
-command = "vscode-eslint-language-server"
-args = ["--stdio"]
-
-[language-server.eslint.config]
-format = true
-nodePath = ""
-onIgnoredFiles = "off"
-packageManager = "yarn"
-quiet = false
-rulesCustomizations = []
-run = "onType"
-useESLintClass = false
-validate = "on"
-codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = true } }
-codeActionOnSave = { mode = "all" }
-experimental = { }
-problems = { shortenToSingleLine = false }
-workingDirectory = { mode = "location" }
-
 [[language]]
 name = "html"
 auto-format = true
@@ -33,6 +13,18 @@ formatter = { command = 'prettier', args = ["--parser", "html"] }
 
 [[language]]
 name = "typescript"
+auto-format = true
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+
+[[language]]
+name = "tsx"
+auto-format = true
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+
+[[language]]
+name = "jsx"
 auto-format = true
 language-servers = ["typescript-language-server", "eslint"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
