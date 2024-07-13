@@ -1,32 +1,74 @@
-[language-server.angular]
-command = "ngserver"
-scope = "source.angular"
-roots = ["angular.json"]
-args = [ "--stdio", "--tsProbeLocations", "$(yarn global dir)/node_modules", "--ngProbeLocations", "$(yarn global dir)/node_modules" ]
-file-types = ["ts", "html"]
+[language-server.rubocop]
+command = "bundle"
+args = ["exec", "rubocop", "--lsp"]
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+format = { enable = true }
+nodePath = ""
+quiet = false
+rulesCustomizations = []
+run = "onType"
+validate = "on"
+experimental = {}
+problems = { shortenToSingleLine = false }
+workingDirectories = { mode = "auto" }
+
+[language-server.eslint.config.codeAction]
+disableRuleComment = { enable = true, location = "separateLine" }
+showDocumentation = { enable = false }
+
+[language-server.stylelint]
+command = "stylelint-lsp"
+args = ["--stdio"]
+
+[language-server.stylelint.config]
+stylelintplus = { autoFixOnFormat = true, autoFixOnSave = true }
+
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.emmet-ls]
+command = "emmet-ls"
+args = ["--stdio"]
 
 [[language]]
 name = "html"
 auto-format = true
-language-servers = ["vscode-html-language-server", "angular"]
+language-servers = ["vscode-html-language-server", "emmet-ls"]
 formatter = { command = 'prettier', args = ["--parser", "html"] }
+
+[[language]]
+name = "ruby"
+auto-format = true
+language-servers = ["solargraph", "rubocop"]
 
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = ["typescript-language-server", "eslint"]
+language-servers = ["typescript-language-server", "eslint", "scls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+
+[[language]]
+name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript", "scls"] }
+language-servers = ["typescript-language-server"]
+auto-format = true
 
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = ["typescript-language-server", "eslint"]
+language-servers = ["typescript-language-server", "eslint", "emmet-ls", "scls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
 name = "jsx"
 auto-format = true
-language-servers = ["typescript-language-server", "eslint"]
+language-servers = ["typescript-language-server", "eslint", "emmet-ls", "scls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
@@ -35,13 +77,22 @@ formatter = { command = 'prettier', args = ["--parser", "json"] }
 
 [[language]]
 name = "css"
+language-servers = [
+  "stylelint",
+  "vscode-css-language-server",
+]
+auto-format = true
 formatter = { command = 'prettier', args = ["--parser", "css"] }
 
 [[language]]
-name = "javascript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-language-servers = ["typescript-language-server"]
+name = "scss"
+file-types = ["scss"]
+language-servers = [
+  "stylelint",
+  { name = "vscode-css-language-server", only-features = ["completion"] },
+]
 auto-format = true
+formatter = { command = 'bash', args = ["-c", "npx stylelint --fix 2>&1 | prettier --parser css "] }
 
 [[language]]
 name = "vue"

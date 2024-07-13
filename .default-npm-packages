@@ -8,4 +8,5 @@ vscode-langservers-extracted
 @angular/language-server
 svelte-language-server
 @volar/vue-language-service
+emmet-ls
 
