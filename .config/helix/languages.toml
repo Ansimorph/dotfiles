@@ -2,26 +2,6 @@
 command = "bundle"
 args = ["exec", "rubocop", "--lsp"]
 
-[language-server.eslint]
-command = "vscode-eslint-language-server"
-args = ["--stdio"]
-
-[language-server.eslint.config]
-codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
-format = { enable = true }
-nodePath = ""
-quiet = false
-rulesCustomizations = []
-run = "onType"
-validate = "on"
-experimental = {}
-problems = { shortenToSingleLine = false }
-workingDirectories = { mode = "auto" }
-
-[language-server.eslint.config.codeAction]
-disableRuleComment = { enable = true, location = "separateLine" }
-showDocumentation = { enable = false }
-
 [language-server.stylelint]
 command = "stylelint-lsp"
 args = ["--stdio"]
@@ -50,7 +30,7 @@ language-servers = ["solargraph", "rubocop"]
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = ["typescript-language-server", "eslint", "scls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "scls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
@@ -62,13 +42,13 @@ auto-format = true
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = ["typescript-language-server", "eslint", "emmet-ls", "scls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "scls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
 name = "jsx"
 auto-format = true
-language-servers = ["typescript-language-server", "eslint", "emmet-ls", "scls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "scls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
