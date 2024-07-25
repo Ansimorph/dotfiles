@@ -28,6 +28,7 @@ d = ["yank_joined_to_clipboard", "delete_selection"]
 [keys.select]
 "{" = ["goto_prev_paragraph"]
 "}" = ["goto_next_paragraph"]
+y = "yank_joined_to_clipboard"
 
 [keys.normal."space"]
 "*" = [
