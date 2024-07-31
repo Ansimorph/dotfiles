@@ -9,9 +9,6 @@ args = ["--stdio"]
 [language-server.stylelint.config]
 stylelintplus = { autoFixOnFormat = true, autoFixOnSave = true }
 
-[language-server.scls]
-command = "simple-completion-language-server"
-
 [language-server.emmet-ls]
 command = "emmet-ls"
 args = ["--stdio"]
@@ -30,25 +27,25 @@ language-servers = ["solargraph", "rubocop"]
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "scls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
 name = "javascript"
-formatter = { command = 'prettier', args = ["--parser", "typescript", "scls"] }
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 language-servers = ["typescript-language-server"]
 auto-format = true
 
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "scls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
 name = "jsx"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls", "scls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]

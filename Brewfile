@@ -23,7 +23,7 @@ brew "mas"
 brew "mise"
 brew "poppler"
 brew "postgresql@16", restart_service: true
-brew "rabbitmq", restart_service: true
+brew "rabbitmq"
 brew "rclone"
 brew "restic"
 brew "ripgrep"

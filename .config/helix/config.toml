@@ -10,34 +10,14 @@ insert = "bar"
 "{" = ["goto_prev_paragraph"]
 "}" = ["goto_next_paragraph"]
 esc = ["collapse_selection", "keep_primary_selection"]
-Z = {Q = ":quit!", Z = ":write-quit!"}
-"*" = [
-  "move_char_right",
-  "move_prev_word_start",
-  "move_next_word_end",
-  "search_selection",
-  "search_next"
-  ]
-
-y = "yank_joined_to_clipboard"
-p = "paste_clipboard_after"
-P = "paste_clipboard_before"
-R = "replace_selections_with_clipboard"
-d = ["yank_joined_to_clipboard", "delete_selection"]
+"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
 
 [keys.select]
 "{" = ["goto_prev_paragraph"]
 "}" = ["goto_next_paragraph"]
-y = "yank_joined_to_clipboard"
 
 [keys.normal."space"]
-"*" = [
-  "move_char_right",
-  "move_prev_word_start",
-  "move_next_word_end",
-  "search_selection",
-  "global_search"
-  ]
+"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "global_search"]
 "f" = "file_picker_in_current_directory"
 "<" = "file_picker_in_current_buffer_directory"
 
