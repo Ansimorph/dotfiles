@@ -1,7 +1,6 @@
 typescript-language-server
 typescript
 prettier
-eslint_d
 stylelint-lsp
 vscode-langservers-extracted
 @astrojs/language-server
