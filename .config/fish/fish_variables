@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR EDITOR:hx
+SETUVAR MISE_FISH_AUTO_ACTIVATE:0
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2d\x2dreverse

@@ -2,6 +2,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/bin/setup-b2
 fzf --fish | source
+mise activate --shims fish | source
 
 # Aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
