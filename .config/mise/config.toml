@@ -1,0 +1,5 @@
+[tools]
+node = "20"
+
+[settings]
+activate_aggressive = true
