@@ -27,7 +27,7 @@ language-servers = ["solargraph", "rubocop"]
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "graphql-language-service"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]

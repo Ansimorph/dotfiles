@@ -1,6 +1,6 @@
 # Imports
 eval "$(/opt/homebrew/bin/brew shellenv)"
-source ~/bin/setup-b2
+source ~/bin/setup-env
 fzf --fish | source
 
 # Aliases
