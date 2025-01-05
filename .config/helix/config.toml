@@ -5,9 +5,6 @@ rulers = [80]
 default-yank-register = "+"
 end-of-line-diagnostics = "hint"
 
-[editor.inline-diagnostics]
-cursor-line = "warning"
-
 [editor.cursor-shape]
 insert = "bar"
 

@@ -20,6 +20,12 @@ language-servers = ["vscode-html-language-server", "emmet-ls"]
 formatter = { command = 'prettier', args = ["--parser", "html"] }
 
 [[language]]
+name = "webc"
+auto-format = true
+language-servers = ["vscode-html-language-server", "emmet-ls"]
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+
+[[language]]
 name = "ruby"
 auto-format = true
 language-servers = ["solargraph", "rubocop"]

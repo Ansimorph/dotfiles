@@ -1,0 +1,28 @@
+[init]
+    defaultBranch = main
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[user]
+	name = Björn Ganslandt
+	email = b.ganslandt@gmail.com
+[core]
+	excludesfile = /Users/bg/.gitignore_global
+	autocrlf = input
+	trustctime = false
+	editor = hx
+[mergetool]
+	keepBackup = true
+	prompt = false
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[color]
+	ui = auto
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[push]
+	default = current
