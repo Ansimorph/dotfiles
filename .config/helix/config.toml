@@ -3,7 +3,6 @@ theme = "nord"
 [editor]
 rulers = [80]
 default-yank-register = "+"
-end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 insert = "bar"

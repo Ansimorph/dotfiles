@@ -1,0 +1,10 @@
+#!/bin/sh
+
+mkdir $1
+cp ~/bin/react-component-template/* ./$1
+cd ./$1
+for f in TEMPLATE*
+  do mv "$f" "${f/TEMPLATE/$1}"
+done
+replace TEMPLATE $1
+
