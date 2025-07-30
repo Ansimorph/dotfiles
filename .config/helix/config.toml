@@ -3,9 +3,13 @@ theme = "nord"
 [editor]
 rulers = [80]
 default-yank-register = "+"
+end-of-line-diagnostics = "disable"
 
 [editor.cursor-shape]
 insert = "bar"
+
+[editor.inline-diagnostics]
+cursor-line = "disable"
 
 [keys.normal]
 "{" = ["goto_prev_paragraph"]
