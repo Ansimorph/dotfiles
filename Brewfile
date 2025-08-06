@@ -77,7 +77,6 @@ cask "soulseek"
 cask "viscosity"
 cask "visual-studio-code"
 cask "vlc"
-cask "xquartz"
 cask "zoom"
 mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
