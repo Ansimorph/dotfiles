@@ -7,19 +7,18 @@ brew "glib"
 brew "unbound", restart_service: :changed
 brew "gnutls"
 brew "aerc"
+brew "codebook-lsp"
 brew "coreutils"
 brew "docker-compose"
-brew "harfbuzz"
-brew "srt"
 brew "ffmpeg"
 brew "fish"
 brew "fzf"
+brew "harfbuzz"
 brew "ghostscript"
 brew "pkgconf"
-brew "helix", args: ["HEAD"]
 brew "imagemagick"
+brew "klog"
 brew "libyaml"
-brew "ltex-ls"
 brew "mas"
 brew "mise"
 brew "ripgrep"
@@ -30,6 +29,8 @@ brew "redis", restart_service: :changed
 brew "restic"
 brew "rust"
 brew "scc"
+brew "tinymist"
+brew "typst"
 brew "vips"
 brew "w3m"
 brew "mongodb/brew/mongodb-community@5.0"
@@ -84,8 +85,6 @@ cask "zoom"
 mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "TestFlight", id: 899247664
 mas "Xcode", id: 497799835
 vscode "arcticicestudio.nord-visual-studio-code"
@@ -96,3 +95,4 @@ vscode "redhat.java"
 vscode "vscjava.vscode-java-debug"
 vscode "vscjava.vscode-maven"
 vscode "youmaycallmev.vscode-java-saber"
+cargo "helix-term"

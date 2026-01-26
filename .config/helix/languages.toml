@@ -9,18 +9,19 @@ args = ["--stdio"]
 [language-server.stylelint.config]
 stylelintplus = { autoFixOnFormat = true, autoFixOnSave = true }
 
-[language-server.ltex-ls.config]
-ltex.language = "de-DE"
-
 [language-server.emmet-ls]
 command = "emmet-ls"
 args = ["--stdio"]
+
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
 
 [[language]]
 name = "email"
 scope = "text.email"
 file-types = ["eml", "email"]
-language-servers = ["ltex-ls"]
+language-servers = ["codebook"]
 text-width = 80
 soft-wrap.enable = true
 
