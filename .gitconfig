@@ -11,6 +11,7 @@
 	autocrlf = input
 	trustctime = false
 	editor = hx
+	pager = delta
 [mergetool]
 	keepBackup = true
 	prompt = false
@@ -18,6 +19,8 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
+[interactive]
+	diffFilter = delta --color-only
 [color]
 	ui = auto
 [filter "lfs"]
@@ -26,3 +29,5 @@
 	required = true
 [push]
 	default = current
+[delta]
+	syntax-theme = Nord
