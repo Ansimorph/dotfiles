@@ -9,10 +9,6 @@ args = ["--stdio"]
 [language-server.stylelint.config]
 stylelintplus = { autoFixOnFormat = true, autoFixOnSave = true }
 
-[language-server.emmet-ls]
-command = "emmet-ls"
-args = ["--stdio"]
-
 [language-server.codebook]
 command = "codebook-lsp"
 args = ["serve"]
@@ -28,13 +24,13 @@ soft-wrap.enable = true
 [[language]]
 name = "html"
 auto-format = true
-language-servers = ["vscode-html-language-server", "emmet-ls"]
+language-servers = ["vscode-html-language-server", "codebook"]
 formatter = { command = "prettier", args = ["--parser", "html"] }
 
 [[language]]
 name = "webc"
 auto-format = true
-language-servers = ["vscode-html-language-server", "emmet-ls"]
+language-servers = ["vscode-html-language-server"]
 formatter = { command = "prettier", args = ["--parser", "html"] }
 
 [[language]]
@@ -57,13 +53,13 @@ auto-format = true
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 
 [[language]]
 name = "jsx"
 auto-format = true
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "emmet-ls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 
 [[language]]
@@ -93,4 +89,8 @@ formatter = { command = "bash", args = ["-c", "npx stylelint --fix 2>&1 | pretti
 name = "vue"
 formatter = { command = "prettier", args = ["--parser", "vue"] }
 auto-format = true
+
+[[language]]
+name = "markdown"
+language-servers = ["codebook"]
 

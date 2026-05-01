@@ -69,6 +69,7 @@ cask "keycastr"
 cask "kitty"
 cask "libreoffice"
 cask "microsoft-teams"
+cask "mixxx"
 cask "mullvad-vpn"
 cask "ngrok"
 cask "obs"
@@ -85,6 +86,7 @@ cask "zoom"
 mas "iMovie", id: 408981434
 mas "Key Codes", id: 414568915
 mas "Keynote", id: 409183694
+mas "Keynote", id: 361285480
 mas "TestFlight", id: 899247664
 mas "Xcode", id: 497799835
 vscode "arcticicestudio.nord-visual-studio-code"

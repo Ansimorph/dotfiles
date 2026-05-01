@@ -7,7 +7,7 @@ vscode-langservers-extracted
 @angular/language-server
 svelte-language-server
 @volar/vue-language-service
-emmet-ls
 graphql-language-service
 graphql-language-service-cli
+pnpm
 
