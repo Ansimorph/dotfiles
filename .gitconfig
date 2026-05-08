@@ -5,7 +5,7 @@
 	smudge = git-media-smudge %f
 [user]
 	name = Björn Ganslandt
-	email = b.ganslandt@gmail.com
+	email = hi@ganslandt.xyz
 [core]
 	excludesfile = /Users/bg/.gitignore_global
 	autocrlf = input

@@ -1,0 +1,65 @@
+{
+    "layer": "top",
+    "position": "top",
+
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "network",
+        "battery",
+        "clock#date",
+        "clock#time"
+    ],
+
+    "battery": {
+        "interval": 10,
+
+        // Connected to AC
+        "format": "  {icon}  {capacity}%",
+
+        // Not connected to AC
+        "format-discharging": "{icon}  {capacity}%",
+        "format-icons": [
+            "", // Icon: battery-full
+            "", // Icon: battery-three-quarters
+            "", // Icon: battery-half
+            "", // Icon: battery-quarter
+            ""  // Icon: battery-empty
+        ],
+        "tooltip": true
+    },
+
+    "clock#time": {
+        "tooltip": false
+    },
+
+    "clock#date": {
+      "interval": 10,
+      "format": "{:%e %b %Y}",
+      "tooltip": false
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": "  ({signalStrength}%)", // Icon: wifi
+        "format-ethernet": "ethernet", // Icon: ethernet
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{essid} {ifname}: {ipaddr}"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "on-click": "foot"
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    }
+}
