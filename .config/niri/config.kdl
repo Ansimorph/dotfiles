@@ -22,15 +22,15 @@ input {
 }
 
 // https://niri-wm.github.io/niri/Configuration:-Outputs
-output "Red Hat, Inc. QEMU Monitor Unknown" {
-    mode "3840x2160"
-    scale 1.5
-    transform "normal"
+output "eDP-1" {
+    layout {
+        default-column-width { proportion 0.8; }
+    }
 }
 
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
-    gaps 12
+    gaps 8
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
