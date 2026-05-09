@@ -4,6 +4,7 @@ theme = "nord"
 rulers = [80]
 default-yank-register = "+"
 end-of-line-diagnostics = "disable"
+mouse = false
 
 [editor.cursor-shape]
 insert = "bar"

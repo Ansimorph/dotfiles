@@ -2,6 +2,10 @@
     "layer": "top",
     "position": "top",
 
+    "modules-left": [
+        "custom/lock"
+    ],
+
     "modules-right": [
         "pulseaudio",
         "network",
@@ -61,5 +65,11 @@
     "tray": {
         "icon-size": 16,
         "spacing": 10
-    }
+    },
+
+    "custom/lock": {
+        "format": "",
+        "on-click": "swaylock",
+        "tooltip": false
+    },
 }

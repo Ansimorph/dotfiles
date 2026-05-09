@@ -4,3 +4,6 @@ node = "22"
 [settings]
 activate_aggressive = true
 idiomatic_version_file_enable_tools = ["ruby", "node"]
+
+[settings.ruby]
+compile = false
