@@ -59,7 +59,7 @@
         "format-icons": {
             "default": ["", ""]
         },
-        "on-click": "foot"
+        "on-click": "pavucontrol"
     },
 
     "tray": {

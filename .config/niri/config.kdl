@@ -49,7 +49,7 @@ layout {
 }
 
 spawn-at-startup "waybar"
-spawn-at-startup "foot" "--server"
+spawn-at-startup "kitty"
 
 hotkey-overlay {
     skip-at-startup
