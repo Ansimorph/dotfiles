@@ -1,18 +1,15 @@
 * {
   border: none;
   border-radius: 0;
-  min-height: 0;
   margin: 0;
+  min-height: 0;
   padding: 0;
 }
 
 #waybar {
   background: #2e3440;
   color: #8fbcbb;
-  font-family:
-    Fira Mono,
-    Noto Sans,
-    sans-serif;
+  font-family: "Fira Mono", "Noto Sans", sans-serif;
   font-size: 14px;
 }
 
@@ -22,6 +19,7 @@
 #network,
 #pulseaudio,
 #temperature,
+#bluetooth,
 #tray {
   padding: 7px 15px;
 }

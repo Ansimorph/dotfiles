@@ -11,11 +11,14 @@
 	autocrlf = input
 	trustctime = false
 	editor = hx
+    pager = delta --syntax-theme "Dracula"
+[interactive]
+    diffFilter = delta --syntax-theme "Dracula"
 [mergetool]
 	keepBackup = true
 	prompt = false
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 [diff]
     colorMoved = default
 [color]

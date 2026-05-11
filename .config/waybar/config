@@ -3,23 +3,34 @@
     "position": "top",
 
     "modules-left": [
-        "custom/lock"
+        "custom/lock",
+        "niri/window"
     ],
 
     "modules-right": [
         "pulseaudio",
         "network",
         "battery",
+        "bluetooth",
         "clock#date",
         "clock#time",
-        "tray",
     ],
+
+    "bluetooth": {
+        "format-on": "BL",
+        "format-off": "No BL",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": "B",
+        "tooltip-format-connected": "{device_enumerate}",
+        "on-click": "blueman-manager",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
 
     "battery": {
         "interval": 10,
 
         // Connected to AC
-        "format": "  {icon}  {capacity}%",
+        "format": "{icon} {capacity}%+",
 
         // Not connected to AC
         "format-discharging": "{icon}  {capacity}%",
@@ -37,6 +48,11 @@
         "tooltip": false
     },
 
+    "niri/window": {
+        "format": "{app_id}",
+        "separate-outputs": true
+    },
+
     "clock#date": {
       "interval": 10,
       "format": "{:%e %b %Y}",
@@ -45,10 +61,10 @@
 
     "network": {
         "interval": 5,
-        "format-wifi": "  ({signalStrength}%)", // Icon: wifi
+        "format-wifi": " ", // Icon: wifi
         "format-ethernet": "ethernet", // Icon: ethernet
         "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{essid} {ifname}: {ipaddr}"
+        "tooltip-format": "{essid} {ifname}: {ipaddr} [{signalStrength}%]"
     },
 
     "pulseaudio": {
