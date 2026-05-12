@@ -11,9 +11,9 @@
 	autocrlf = input
 	trustctime = false
 	editor = hx
-    pager = delta --syntax-theme "Dracula"
+    pager = delta --color-only
 [interactive]
-    diffFilter = delta --syntax-theme "Dracula"
+    diffFilter = delta --color-only
 [mergetool]
 	keepBackup = true
 	prompt = false
@@ -29,6 +29,7 @@
 	required = true
 [push]
 	default = current
+	autoSetupRemote = true
 [log]
 	date = short
 [format]

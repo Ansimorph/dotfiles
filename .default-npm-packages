@@ -9,5 +9,5 @@ svelte-language-server
 @volar/vue-language-service
 graphql-language-service
 graphql-language-service-cli
-pnpm
+corepack
 

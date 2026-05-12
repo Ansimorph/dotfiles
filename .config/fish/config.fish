@@ -3,6 +3,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/bin/setup-env
 fzf --fish | source
 mise activate fish | source
+eval (ssh-agent -c | head -n2)
 
 # Aliases
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
