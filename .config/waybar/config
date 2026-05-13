@@ -17,10 +17,10 @@
     ],
 
     "bluetooth": {
-        "format-on": "BL",
-        "format-off": "No BL",
+        "format-on": "󰂯",
+        "format-off": "󰂲",
         "format-disabled": "", // an empty format will hide the module
-        "format-connected": "B",
+        "format-connected": "󰂯",
         "tooltip-format-connected": "{device_enumerate}",
         "on-click": "blueman-manager",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
@@ -33,14 +33,8 @@
         "format": "{icon} {capacity}%+",
 
         // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
-        "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            ""  // Icon: battery-empty
-        ],
+        "format-discharging": "{icon} {capacity}%",
+        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
         "tooltip": true
     },
 
@@ -69,8 +63,8 @@
 
     "pulseaudio": {
         "scroll-step": 1,
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
         "format-muted": "",
         "format-icons": {
             "default": ["", ""]
@@ -84,7 +78,7 @@
     },
 
     "custom/lock": {
-        "format": "",
+        "format": "",
         "on-click": "swaylock",
         "tooltip": false
     },
