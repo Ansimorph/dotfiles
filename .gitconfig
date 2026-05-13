@@ -11,7 +11,9 @@
 	autocrlf = input
 	trustctime = false
 	editor = hx
-    pager = delta --color-only
+    pager = delta
+[delta]
+    syntax-theme = Catppuccin Mocha
 [interactive]
     diffFilter = delta --color-only
 [mergetool]
