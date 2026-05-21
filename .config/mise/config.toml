@@ -1,5 +1,17 @@
 [tools]
 node = "22"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:prettier" = "latest"
+"npm:stylelint-lsp" = "latest"
+"npm:vscode-langservers-extracted" = "4.8.0"
+"npm:@astrojs/language-server" = "latest"
+"npm:@angular/language-server" = "latest"
+"npm:svelte-language-server" = "latest"
+"npm:@volar/vue-language-service" = "latest"
+"npm:graphql-language-service" = "latest"
+"npm:graphql-language-service-cli" = "latest"
+"npm:corepack" = "latest"
 
 [settings]
 activate_aggressive = true

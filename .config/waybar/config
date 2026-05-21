@@ -79,7 +79,7 @@
 
     "custom/lock": {
         "format": "",
-        "on-click": "swaylock",
+        "on-click": "sh -c 'gtklock -d && sleep 1s && systemctl suspend'",
         "tooltip": false
     },
 }
