@@ -1,5 +1,5 @@
 [tools]
-node = "22"
+node = "22.12.0"
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
 "npm:prettier" = "latest"
@@ -12,6 +12,7 @@ node = "22"
 "npm:graphql-language-service" = "latest"
 "npm:graphql-language-service-cli" = "latest"
 "npm:corepack" = "latest"
+usage = "latest"
 
 [settings]
 activate_aggressive = true
