@@ -4,5 +4,5 @@ SETUVAR EDITOR:hx
 SETUVAR --export SSH_AUTH_SOCK:/run/user/1000/keyring/ssh
 SETUVAR __fish_initialized:4300
 SETUVAR fish_greeting:\x1d
-# SETUVAR fish_user_paths:/Users/bg/\x2ecargo/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/Users/bg/bin
-SETUVAR fish_user_paths:/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/home/bg/bin
+SETUVAR fish_user_paths:/Users/bg/\x2ecargo/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/Users/bg/bin
+# SETUVAR fish_user_paths:/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/home/bg/bin
