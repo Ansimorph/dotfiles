@@ -53,11 +53,24 @@ hotkey-overlay {
     skip-at-startup
 }
 
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Downloads/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 window-rule {
     geometry-corner-radius 13
     clip-to-geometry true    
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
 }
 
 gestures {
